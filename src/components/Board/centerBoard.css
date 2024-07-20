@@ -1,0 +1,40 @@
+/* src/components/CenterBoard.css */
+.center-board {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    transform: rotate(45deg);
+}
+
+.triangle {
+    width: 50%;
+    height: 50%;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    position: absolute;
+}
+
+.red {
+    background-color: red;
+    top: 0;
+    left: 0;
+}
+
+.green {
+    background-color: green;
+    top: 0;
+    right: 0;
+}
+
+.yellow {
+    background-color: yellow;
+    bottom: 0;
+    left: 0;
+}
+
+.blue {
+    background-color: blue;
+    bottom: 0;
+    right: 0;
+}

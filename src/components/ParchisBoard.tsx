@@ -1,66 +1,85 @@
-import React from "react";
-import "./ParchisBoard.css";
+import React from 'react';
+import styled from 'styled-components';
+import StartPoint from './Board/StartPoint';
+import PlayerCircle from './Board/Atoms/PlayerCircle';
+import MainInnerRectangle from './Board/Atoms/MainInnerRectangle';
 
-const BOARD = 9;
+import { boardRectangle } from '../data/data';
+import { START_POSITIONS, PLAYABLE_POSITIONS } from '../utils/board-utils';
+
+import './ParchisBoard.css';
+import PlayableRectangle from './Board/Atoms/PlayableRectangle';
+
 const RECTABGLES = 21;
 
 const Rectangle = ({ index }) => {
     const getClassName = (index: number) => {
         switch (index) {
             case 0:
-                return "top";
+                return 'top';
             case 1:
-                return "right";
+                return 'right';
             case 2:
-                return "right";
+                return 'right';
             case 3:
-                return "left";
+                return 'left';
             default:
-                return "";
-
+                return '';
         }
-    }
-    return (
-        <div key={index} className={`${getClassName(index)}`}>
+    };
+    return <div key={index} className={`${getClassName(index)}`}></div>;
+};
 
-        </div>
-    );
-
-}
+const PrincipalBoard = styled.div`
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 100%;
+    height: 100%;
+    max-width: 900px;
+    max-height: 900px;
+`;
 
 const ParchisBoard = () => {
     return (
-        <div className="board">
-            {Array(BOARD)
-                .fill(0)
-                .map((_, index) => (
-                    <div key={index} className="cell">
-                        {index === 0 || index === 2 || index === 6 || index === 8 ? (
-                            <div className="startPoint">
-                                <div className="circlesContainer">
-                                    {Array(4).fill(0).map((_, index) => (
-                                        <div className="circle">{index}</div>
-                                    ))}
-                                </div>
-                            </div>
-                        ) : null}
-                        {index === 1 || index === 3 || index === 5 || index === 7 ? (
-                            <div className={`rect ${index === 1 || index === 7 ? "rect-horizontal" : ""} ${index === 3 || index === 5 ? "rect-vertical" : ""}`}>
-                                {Array(RECTABGLES).fill(0).map((_, index) => (
-                                    <div key={index} className="rectangle">{index}</div>
+        <PrincipalBoard>
+            {boardRectangle.map((_, index) => (
+                <MainInnerRectangle>
+                    {START_POSITIONS.has(index) ? (
+                        <StartPoint>
+                            {Array(4)
+                                .fill(0)
+                                .map((_, index) => (
+                                    <PlayerCircle
+                                        index={index}
+                                        selected={index === 0}
+                                    />
                                 ))}
-                            </div>
-                        ) : null}
-                        {index === 4 ? (
-                            <div className="center">
-                                {Array(4).fill(0).map((_, index) => (
+                        </StartPoint>
+                    ) : null}
+                    {PLAYABLE_POSITIONS.has(index) ? (
+                        <PlayableRectangle index={index}>
+                            {Array(RECTABGLES)
+                                .fill(0)
+                                .map((_, index) => (
+                                    <div key={index} className="rectangle">
+                                        {index}
+                                    </div>
+                                ))}
+                        </PlayableRectangle>
+                    ) : null}
+                    {index === 4 ? (
+                        <div className="center">
+                            {Array(4)
+                                .fill(0)
+                                .map((_, index) => (
                                     <Rectangle index={index} />
                                 ))}
-                            </div>
-                        ) : null}
-                    </div>
-                ))}
-        </div>
+                        </div>
+                    ) : null}
+                </MainInnerRectangle>
+            ))}
+        </PrincipalBoard>
     );
 };
 
