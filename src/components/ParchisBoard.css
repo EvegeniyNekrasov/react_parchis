@@ -1,5 +1,27 @@
 .rectangle {
     border: 1px solid black;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
+}
+
+.rectangle-number {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+.cell-circles {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+.rectangle.safe {
+    background-color: rgb(226, 225, 225) !important;
 }
 
 .center {

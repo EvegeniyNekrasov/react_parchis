@@ -45,16 +45,54 @@ type Cell = {
     p2: number | null;
     cellNumber: number | null;
     safeSpot: boolean;
+    startPoint: boolean;
+    color: string | null;
 };
 
 export const boardRectangle: number[] = Array(9).fill(0);
 
 const NUMBER_OF_CELLS: number = 21;
 
-const VERTICAL_SAFE_SPOTS: number[] = [1, 12, 14];
-const HORISONTAL_SAFE_SPOTS: number[] = [4, 7, 18];
+const VERTICAL_TOP_SAFE_SPOTS: number[] = [1, 12, 14];
+const VERTICAL_BOTTOM_SAFE_SPOTS: number[] = [6, 8, 19];
+const HORISONTAL_LEFT_SAFE_SPOTS: number[] = [4, 7, 18];
+const HORISONTAL_RIGHT_SAFE_SPOTS: number[] = [2, 13, 16];
 
-const createPlayableRecangle = (safeSpots: number[]): Cell[] => {
+
+const verticalTopNumbers = [
+    35, 34, 33,
+    36, null, 32,
+    37, null, 31,
+    38, null, 30,
+    39, null, 29,
+    40, null, 28,
+    41, null, 27,
+];
+
+const verticalBottomNumbers = [
+    61, null, 7,
+    62, null, 6,
+    63, null, 5,
+    64, null, 4,
+    65, null, 3,
+    66, null, 2,
+    67, 68, 1
+];
+
+const horisontalLeftNumbers = [
+    50, 49, 48, 47, 46, 45, 44,
+    51, null, null, null, null, null, null,
+    52, 53, 54, 55, 56, 57, 58
+]
+
+const horisontalRightNumbers = [
+    24, 23, 22, 21, 20, 19, 18,
+    null, null, null, null, null, null, 17,
+    10, 11, 12, 13, 14, 15, 16
+
+]
+
+const createPlayableRecangle = (safeSpots: number[], cellNumbers: (number | null)[], color: number): Cell[] => {
     const cells: Cell[] = new Array(NUMBER_OF_CELLS);
     const safeSpotSet = new Set(safeSpots);
 
@@ -62,18 +100,28 @@ const createPlayableRecangle = (safeSpots: number[]): Cell[] => {
         cells[i] = {
             p1: null,
             p2: null,
-            cellNumber: null,
+            cellNumber: cellNumbers[i],
             safeSpot: safeSpotSet.has(i),
+            startPoint: false,
+            color: cellNumbers[i] === null ? colors[color] : null,
         };
     }
 
     return cells;
 };
 
-export const playableRectangleVertical: Cell[] =
-    createPlayableRecangle(VERTICAL_SAFE_SPOTS);
-export const playableRectangleHorisontal: Cell[] = createPlayableRecangle(
-    HORISONTAL_SAFE_SPOTS,
+export const playableRectangleTopVertical: Cell[] = createPlayableRecangle(
+    VERTICAL_TOP_SAFE_SPOTS, verticalTopNumbers, PlayerColor.RED
+);
+export const playableRectangleBottomVertical: Cell[] = createPlayableRecangle(
+    VERTICAL_BOTTOM_SAFE_SPOTS, verticalBottomNumbers, PlayerColor.YELLOW
+);
+
+export const playableRectangleLeftHorisontal: Cell[] = createPlayableRecangle(
+    HORISONTAL_LEFT_SAFE_SPOTS, horisontalLeftNumbers, PlayerColor.BLUE
+);
+export const playableRectangleRightHorisontal: Cell[] = createPlayableRecangle(
+    HORISONTAL_RIGHT_SAFE_SPOTS, horisontalRightNumbers, PlayerColor.GREEN
 );
 
 export const players: Player[] = createPlayers();

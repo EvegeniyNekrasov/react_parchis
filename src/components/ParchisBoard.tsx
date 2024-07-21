@@ -6,7 +6,14 @@ import PlayerCircle from './Board/Atoms/PlayerCircle';
 import MainInnerRectangle from './Board/Atoms/MainInnerRectangle';
 import PlayableRectangle from './Board/Atoms/PlayableRectangle';
 
-import { boardRectangle } from '../data/data';
+import {
+    boardRectangle,
+    Player,
+    playableRectangleBottomVertical,
+    playableRectangleTopVertical,
+    playableRectangleLeftHorisontal,
+    playableRectangleRightHorisontal,
+} from '../data/data';
 import { START_POSITIONS, PLAYABLE_POSITIONS } from '../utils/board-utils';
 
 import './ParchisBoard.css';
@@ -42,19 +49,36 @@ const PrincipalBoard = styled.div`
     max-height: var(--board-dimention);
 `;
 
-const ParchisBoard = ({ players }) => {
+interface PlayableRectangleProps {
+    players: Player[];
+}
+
+const ParchisBoard: React.FC<PlayableRectangleProps> = ({ players }) => {
+    const initialCellNumber = React.useRef(34);
+
+    const getCellNumber = (): number => {
+        initialCellNumber.current += 1;
+        if (initialCellNumber.current === 68) {
+            initialCellNumber.current = 1;
+        }
+        return initialCellNumber.current;
+    };
+
     React.useEffect(() => {
-        console.log(players)
-    }, [players])
+        console.log(playableRectangleBottomVertical);
+        console.log(playableRectangleTopVertical);
+        console.log(playableRectangleLeftHorisontal);
+        console.log(playableRectangleRightHorisontal);
+    }, [players]);
+
     return (
         <PrincipalBoard>
             {boardRectangle.map((_, index) => (
                 <MainInnerRectangle>
                     {START_POSITIONS.has(index) ? (
-
                         <StartPoint>
                             {players
-                                .filter(i => i.position === index)
+                                .filter((i) => i.position === index)
                                 .map((item, i) => (
                                     <PlayerCircle
                                         selected={i === 0}
@@ -64,19 +88,99 @@ const ParchisBoard = ({ players }) => {
                         </StartPoint>
                     ) : null}
 
-
-                    {PLAYABLE_POSITIONS.has(index) && players.map(i => i.position === index) ? (
-
+                    {/* {PLAYABLE_POSITIONS.has(index) &&
+                    players.map((i) => i.position === index) ? (
                         <PlayableRectangle index={index}>
+                           
                             {Array(RECTABGLES)
                                 .fill(0)
                                 .map((_, i) => (
                                     <div key={i} className="rectangle">
-                                        {i}
+                                        {getCellNumber()}
                                     </div>
                                 ))}
                         </PlayableRectangle>
-                    ) : null}
+                    ) : null} */}
+                    {PLAYABLE_POSITIONS.has(index) && (
+                        <>
+                            {index === 1 && (
+                                <PlayableRectangle index={index}>
+                                    {playableRectangleTopVertical.map(
+                                        (cell, i) => (
+                                            <div
+                                                key={i}
+                                                className={`
+                                                    rectangle ${cell.safeSpot ? 'safe' : ''}
+                                                    `}
+                                                    style={{ backgroundColor: cell.color ? cell.color : 'transparent' }}
+                                            >
+                                                <div className='rectangle-number'>{cell.cellNumber}</div>
+                                                {cell.p1 && <div className='cell-circles'>{ }</div>}
+                                                {cell.p2 && <div className='cell-circles'>{ }</div>}
+
+                                            </div>
+                                        ),
+                                    )}
+                                </PlayableRectangle>
+                            )}
+                            {index === 3 && (
+                                <PlayableRectangle index={index}>
+                                    {playableRectangleLeftHorisontal.map(
+                                        (cell, i) => (
+                                            <div
+                                                key={i}
+                                                className={`rectangle ${cell.safeSpot ? 'safe' : ''}`}
+                                                style={{ backgroundColor: cell.color ? cell.color : 'transparent' }}
+                                            >
+                                                <div className='rectangle-number'>{cell.cellNumber}</div>
+                                                {cell.p1 && <div className='cell-circles'>{ }</div>}
+                                                {cell.p2 && <div className='cell-circles'>{ }</div>}
+
+                                            </div>
+                                        ),
+                                    )}
+                                </PlayableRectangle>
+                            )}
+
+                            {index === 5 && (
+                                <PlayableRectangle index={index}>
+                                    {playableRectangleRightHorisontal.map(
+                                        (cell, i) => (
+                                            <div
+                                                key={i}
+                                                className={`rectangle ${cell.safeSpot ? 'safe' : ''}`}
+                                                style={{ backgroundColor: cell.color ? cell.color : 'transparent' }}
+                                            >
+                                                <div className='rectangle-number'>{cell.cellNumber}</div>
+                                                {cell.p1 && <div className='cell-circles'>{ }</div>}
+                                                {cell.p2 && <div className='cell-circles'>{ }</div>}
+
+                                            </div>
+                                        ),
+                                    )}
+                                </PlayableRectangle>
+                            )}
+
+                            {index === 7 && (
+                                <PlayableRectangle index={index}>
+                                    {playableRectangleBottomVertical.map(
+                                        (cell, i) => (
+                                            <div
+                                                key={i}
+                                                className={`rectangle ${cell.safeSpot ? 'safe' : ''}`}
+                                                style={{ backgroundColor: cell.color ? cell.color : 'transparent' }}
+                                            >
+                                                <div className='rectangle-number'>{cell.cellNumber}</div>
+                                                {cell.p1 && <div className='cell-circles'>{ }</div>}
+                                                {cell.p2 && <div className='cell-circles'>{ }</div>}
+
+                                            </div>
+                                        ),
+                                    )}
+                                </PlayableRectangle>
+                            )}
+                        </>
+                    )}
                     {index === 4 ? (
                         <div className="center">
                             {Array(4)

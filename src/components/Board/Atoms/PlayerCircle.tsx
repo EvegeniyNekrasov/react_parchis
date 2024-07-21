@@ -23,7 +23,7 @@ interface PlayerCircleProps {
 
 const PlayerCircle: React.FC<PlayerCircleProps> = ({
     selected = false,
-    data
+    data,
 }) => {
     const [player, setPlayer] = React.useState<Player | null>(null);
 
@@ -34,12 +34,12 @@ const PlayerCircle: React.FC<PlayerCircleProps> = ({
     return (
         <>
             <PlayerName>{data.name}</PlayerName>
-            {player && player.pieces.map((_, i) => (
-                <Circle color={colors[player.color!]}>
-                    <span>{i}</span>
-                </Circle>
-            ))}
-
+            {player &&
+                player.pieces.map((_, i) => (
+                    <Circle color={colors[player.color!]}>
+                        <span>{i}</span>
+                    </Circle>
+                ))}
         </>
     );
 };

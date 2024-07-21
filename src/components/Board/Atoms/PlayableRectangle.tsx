@@ -49,7 +49,11 @@ const PlayableRectangle: React.FC<PlayableRectangleProps> = ({
     index,
 }) => {
     const { gridTemplateColumn, gridTemplateRow } = getGridTemplate(index);
-    return <Rectangle $column={gridTemplateColumn} $row={gridTemplateRow}>{children}</Rectangle>;
+    return (
+        <Rectangle $column={gridTemplateColumn} $row={gridTemplateRow}>
+            {children}
+        </Rectangle>
+    );
 };
 
 export default PlayableRectangle;
