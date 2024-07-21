@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { colors, Player } from '../../../data/data';
 
 const Circle = styled.div`
     width: 60px;
@@ -11,19 +12,35 @@ const Circle = styled.div`
     align-items: center;
 `;
 
+const PlayerName = styled.div`
+    position: absolute;
+`;
+
 interface PlayerCircleProps {
-    index: number;
     selected: boolean;
+    data: Player;
 }
 
 const PlayerCircle: React.FC<PlayerCircleProps> = ({
-    index,
     selected = false,
+    data
 }) => {
+    const [player, setPlayer] = React.useState<Player | null>(null);
+
+    React.useEffect(() => {
+        setPlayer(data);
+    }, [data]);
+
     return (
-        <Circle color={selected ? 'red' : 'blue'}>
-            <span>{index}</span>
-        </Circle>
+        <>
+            <PlayerName>{data.name}</PlayerName>
+            {player && player.pieces.map((_, i) => (
+                <Circle color={colors[player.color!]}>
+                    <span>{i}</span>
+                </Circle>
+            ))}
+
+        </>
     );
 };
 

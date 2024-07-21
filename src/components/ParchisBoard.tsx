@@ -1,14 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import StartPoint from './Board/StartPoint';
 import PlayerCircle from './Board/Atoms/PlayerCircle';
 import MainInnerRectangle from './Board/Atoms/MainInnerRectangle';
+import PlayableRectangle from './Board/Atoms/PlayableRectangle';
 
 import { boardRectangle } from '../data/data';
 import { START_POSITIONS, PLAYABLE_POSITIONS } from '../utils/board-utils';
 
 import './ParchisBoard.css';
-import PlayableRectangle from './Board/Atoms/PlayableRectangle';
 
 const RECTABGLES = 21;
 
@@ -36,34 +37,42 @@ const PrincipalBoard = styled.div`
     grid-template-rows: repeat(3, 1fr);
     width: 100%;
     height: 100%;
-    max-width: 900px;
-    max-height: 900px;
+    margin: 0 auto;
+    max-width: var(--board-dimention);
+    max-height: var(--board-dimention);
 `;
 
-const ParchisBoard = () => {
+const ParchisBoard = ({ players }) => {
+    React.useEffect(() => {
+        console.log(players)
+    }, [players])
     return (
         <PrincipalBoard>
             {boardRectangle.map((_, index) => (
                 <MainInnerRectangle>
                     {START_POSITIONS.has(index) ? (
+
                         <StartPoint>
-                            {Array(4)
-                                .fill(0)
-                                .map((_, index) => (
+                            {players
+                                .filter(i => i.position === index)
+                                .map((item, i) => (
                                     <PlayerCircle
-                                        index={index}
-                                        selected={index === 0}
+                                        selected={i === 0}
+                                        data={item}
                                     />
                                 ))}
                         </StartPoint>
                     ) : null}
-                    {PLAYABLE_POSITIONS.has(index) ? (
+
+
+                    {PLAYABLE_POSITIONS.has(index) && players.map(i => i.position === index) ? (
+
                         <PlayableRectangle index={index}>
                             {Array(RECTABGLES)
                                 .fill(0)
-                                .map((_, index) => (
-                                    <div key={index} className="rectangle">
-                                        {index}
+                                .map((_, i) => (
+                                    <div key={i} className="rectangle">
+                                        {i}
                                     </div>
                                 ))}
                         </PlayableRectangle>
@@ -72,8 +81,8 @@ const ParchisBoard = () => {
                         <div className="center">
                             {Array(4)
                                 .fill(0)
-                                .map((_, index) => (
-                                    <Rectangle index={index} />
+                                .map((_, i) => (
+                                    <Rectangle index={i} />
                                 ))}
                         </div>
                     ) : null}

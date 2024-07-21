@@ -12,7 +12,7 @@ export const colors = {
     [PlayerColor.YELLOW]: 'yellow',
 };
 
-type Player = {
+export type Player = {
     color: PlayerColor | null;
     position: number | null;
     pieces: number[];

@@ -1,15 +1,17 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const getGridTemplate = (index: number) => {
     let gridTemplateColumn = '';
     let gridTemplateRow = '';
     switch (index) {
+        // vertical rectangles
         case 1:
         case 7:
             gridTemplateColumn = 'repeat(3, 1fr)';
             gridTemplateRow = 'repeat(7, 1fr)';
             break;
+        // horizontal rectangles
         case 3:
         case 5:
             gridTemplateColumn = 'repeat(7, 1fr)';
@@ -25,17 +27,16 @@ const getGridTemplate = (index: number) => {
 };
 
 type ReactangleProps = {
-    gridPosition: number;
+    $column: string;
+    $row: string;
 };
 
 const Rectangle = styled.div<ReactangleProps>`
     width: calc(var(--board-dimention) / 3);
     height: calc(var(--board-dimention) / 3);
     display: grid;
-    grid-template-columns: ${({ gridPosition }) =>
-        getGridTemplate(gridPosition).gridTemplateColumn};
-    grid-template-rows: ${({ gridPosition }) =>
-        getGridTemplate(gridPosition).gridTemplateRow};
+    grid-template-columns: ${({ $column }) => $column};
+    grid-template-rows: ${({ $row }) => $row};
 `;
 
 interface PlayableRectangleProps {
@@ -47,12 +48,8 @@ const PlayableRectangle: React.FC<PlayableRectangleProps> = ({
     children,
     index,
 }) => {
-    useEffect(() => {
-        console.log(`index: ${index}`);
-        console.log(getGridTemplate(index).gridTemplateColumn);
-        console.log(getGridTemplate(index).gridTemplateRow);
-    }, [index]);
-    return <Rectangle gridPosition={index}>{children}</Rectangle>;
+    const { gridTemplateColumn, gridTemplateRow } = getGridTemplate(index);
+    return <Rectangle $column={gridTemplateColumn} $row={gridTemplateRow}>{children}</Rectangle>;
 };
 
 export default PlayableRectangle;
