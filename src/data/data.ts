@@ -40,7 +40,7 @@ const createPlayers = (): Player[] => {
     return players;
 };
 
-type Cell = {
+export type Cell = {
     p1: number | null;
     p2: number | null;
     cellNumber: number | null;
@@ -103,7 +103,7 @@ const createPlayableRecangle = (safeSpots: number[], cellNumbers: (number | null
             cellNumber: cellNumbers[i],
             safeSpot: safeSpotSet.has(i),
             startPoint: false,
-            color: cellNumbers[i] === null ? colors[color] : null,
+            color: cellNumbers[i] === null ? colors[color as keyof typeof colors] : null,
         };
     }
 

@@ -13,10 +13,12 @@ import {
     playableRectangleTopVertical,
     playableRectangleLeftHorisontal,
     playableRectangleRightHorisontal,
+    Cell,
 } from '../data/data';
 import { START_POSITIONS, PLAYABLE_POSITIONS } from '../utils/board-utils';
 
 import './ParchisBoard.css';
+import CellCircle from './Board/Atoms/CellCircle';
 
 const RECTABGLES = 21;
 
@@ -54,21 +56,27 @@ interface PlayableRectangleProps {
 }
 
 const ParchisBoard: React.FC<PlayableRectangleProps> = ({ players }) => {
-    const initialCellNumber = React.useRef(34);
+    // const initialCellNumber = React.useRef(34);
 
-    const getCellNumber = (): number => {
-        initialCellNumber.current += 1;
-        if (initialCellNumber.current === 68) {
-            initialCellNumber.current = 1;
-        }
-        return initialCellNumber.current;
-    };
+    const [rectangleBottomVertical, setReactangleBottomVertical] = React.useState<Cell[] | null>([]);
+    const [rectangleTopVertical, setReactangleTopVertical] = React.useState<Cell[] | null>([]);
+    const [rectangleLeftHorizontal, setReactangleLeftHorizontal] = React.useState<Cell[] | null>([]);
+    const [rectangleRightHorizontal, setReactangleRightHorizontal] = React.useState<Cell[] | null>([]);
+
+    const [playersData, setPlayersData] = React.useState<null | Player[]>(null);
 
     React.useEffect(() => {
-        console.log(playableRectangleBottomVertical);
-        console.log(playableRectangleTopVertical);
-        console.log(playableRectangleLeftHorisontal);
-        console.log(playableRectangleRightHorisontal);
+        setReactangleBottomVertical(playableRectangleBottomVertical);
+        setReactangleTopVertical(playableRectangleTopVertical);
+        setReactangleLeftHorizontal(playableRectangleLeftHorisontal);
+        setReactangleRightHorizontal(playableRectangleRightHorisontal);
+        
+        setPlayersData(players);
+
+        // console.log(playableRectangleBottomVertical);
+        // console.log(playableRectangleTopVertical);
+        // console.log(playableRectangleLeftHorisontal);
+        // console.log(playableRectangleRightHorisontal);
     }, [players]);
 
     return (
@@ -77,7 +85,7 @@ const ParchisBoard: React.FC<PlayableRectangleProps> = ({ players }) => {
                 <MainInnerRectangle>
                     {START_POSITIONS.has(index) ? (
                         <StartPoint>
-                            {players
+                            {playersData && playersData
                                 .filter((i) => i.position === index)
                                 .map((item, i) => (
                                     <PlayerCircle
@@ -88,35 +96,22 @@ const ParchisBoard: React.FC<PlayableRectangleProps> = ({ players }) => {
                         </StartPoint>
                     ) : null}
 
-                    {/* {PLAYABLE_POSITIONS.has(index) &&
-                    players.map((i) => i.position === index) ? (
-                        <PlayableRectangle index={index}>
-                           
-                            {Array(RECTABGLES)
-                                .fill(0)
-                                .map((_, i) => (
-                                    <div key={i} className="rectangle">
-                                        {getCellNumber()}
-                                    </div>
-                                ))}
-                        </PlayableRectangle>
-                    ) : null} */}
                     {PLAYABLE_POSITIONS.has(index) && (
                         <>
                             {index === 1 && (
                                 <PlayableRectangle index={index}>
-                                    {playableRectangleTopVertical.map(
+                                    {rectangleTopVertical && rectangleTopVertical.map(
                                         (cell, i) => (
                                             <div
                                                 key={i}
                                                 className={`
                                                     rectangle ${cell.safeSpot ? 'safe' : ''}
                                                     `}
-                                                    style={{ backgroundColor: cell.color ? cell.color : 'transparent' }}
+                                                style={{ backgroundColor: cell.color ? cell.color : 'transparent' }}
                                             >
                                                 <div className='rectangle-number'>{cell.cellNumber}</div>
-                                                {cell.p1 && <div className='cell-circles'>{ }</div>}
-                                                {cell.p2 && <div className='cell-circles'>{ }</div>}
+                                                {cell.p1 && <CellCircle color={null} />}
+                                                {cell.p2 && <CellCircle color={null} />}
 
                                             </div>
                                         ),
@@ -125,7 +120,7 @@ const ParchisBoard: React.FC<PlayableRectangleProps> = ({ players }) => {
                             )}
                             {index === 3 && (
                                 <PlayableRectangle index={index}>
-                                    {playableRectangleLeftHorisontal.map(
+                                    {rectangleLeftHorizontal && rectangleLeftHorizontal.map(
                                         (cell, i) => (
                                             <div
                                                 key={i}
@@ -133,8 +128,8 @@ const ParchisBoard: React.FC<PlayableRectangleProps> = ({ players }) => {
                                                 style={{ backgroundColor: cell.color ? cell.color : 'transparent' }}
                                             >
                                                 <div className='rectangle-number'>{cell.cellNumber}</div>
-                                                {cell.p1 && <div className='cell-circles'>{ }</div>}
-                                                {cell.p2 && <div className='cell-circles'>{ }</div>}
+                                                {cell.p1 && <CellCircle color={null} />}
+                                                {cell.p2 && <CellCircle color={null} />}
 
                                             </div>
                                         ),
@@ -144,7 +139,7 @@ const ParchisBoard: React.FC<PlayableRectangleProps> = ({ players }) => {
 
                             {index === 5 && (
                                 <PlayableRectangle index={index}>
-                                    {playableRectangleRightHorisontal.map(
+                                    {rectangleRightHorizontal && rectangleRightHorizontal.map(
                                         (cell, i) => (
                                             <div
                                                 key={i}
@@ -152,8 +147,8 @@ const ParchisBoard: React.FC<PlayableRectangleProps> = ({ players }) => {
                                                 style={{ backgroundColor: cell.color ? cell.color : 'transparent' }}
                                             >
                                                 <div className='rectangle-number'>{cell.cellNumber}</div>
-                                                {cell.p1 && <div className='cell-circles'>{ }</div>}
-                                                {cell.p2 && <div className='cell-circles'>{ }</div>}
+                                                {cell.p1 && <CellCircle color={null} />}
+                                                {cell.p2 && <CellCircle color={null} />}
 
                                             </div>
                                         ),
@@ -163,7 +158,7 @@ const ParchisBoard: React.FC<PlayableRectangleProps> = ({ players }) => {
 
                             {index === 7 && (
                                 <PlayableRectangle index={index}>
-                                    {playableRectangleBottomVertical.map(
+                                    {rectangleBottomVertical && rectangleBottomVertical.map(
                                         (cell, i) => (
                                             <div
                                                 key={i}
@@ -171,8 +166,8 @@ const ParchisBoard: React.FC<PlayableRectangleProps> = ({ players }) => {
                                                 style={{ backgroundColor: cell.color ? cell.color : 'transparent' }}
                                             >
                                                 <div className='rectangle-number'>{cell.cellNumber}</div>
-                                                {cell.p1 && <div className='cell-circles'>{ }</div>}
-                                                {cell.p2 && <div className='cell-circles'>{ }</div>}
+                                                {cell.p1 && <CellCircle color={null} />}
+                                                {cell.p2 && <CellCircle color={null} />}
 
                                             </div>
                                         ),
