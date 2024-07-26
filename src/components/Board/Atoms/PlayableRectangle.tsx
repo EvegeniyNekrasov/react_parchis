@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { PlayableRectangleProps } from '../../../interfaces/interfaces';
 
 const getGridTemplate = (index: number) => {
     let gridTemplateColumn = '';
@@ -38,11 +39,6 @@ const Rectangle = styled.div<ReactangleProps>`
     grid-template-columns: ${({ $column }) => $column};
     grid-template-rows: ${({ $row }) => $row};
 `;
-
-interface PlayableRectangleProps {
-    children: React.ReactNode;
-    index: number;
-}
 
 const PlayableRectangle: React.FC<PlayableRectangleProps> = ({
     children,

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { MainInnerRectangleProps } from '../../../interfaces/interfaces';
 
 const Cell = styled.div`
     display: flex;
@@ -9,10 +10,6 @@ const Cell = styled.div`
     width: calc(var(--board-dimention) / 3);
     height: calc(var(--board-dimention) / 3);
 `;
-
-interface MainInnerRectangleProps {
-    children: React.ReactNode;
-}
 
 const MainInnerRectangle: React.FC<MainInnerRectangleProps> = ({
     children,

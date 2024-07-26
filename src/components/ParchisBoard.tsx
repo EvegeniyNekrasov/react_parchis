@@ -17,11 +17,13 @@ import {
 } from '../data/data';
 import { START_POSITIONS, PLAYABLE_POSITIONS } from '../utils/board-utils';
 
-import './ParchisBoard.css';
-import CellCircle from './Board/Atoms/CellCircle';
 import { throwDice } from '../data/dice';
 import { playerThrowsDice } from '../types/player';
+import { PlayableRectangleProps } from '../interfaces/interfaces';
 
+import CellCircle from './Board/Atoms/CellCircle';
+
+import './ParchisBoard.css';
 const RECTABGLES = 21;
 
 const Rectangle = ({ index }) => {
@@ -52,10 +54,6 @@ const PrincipalBoard = styled.div`
     max-width: var(--board-dimention);
     max-height: var(--board-dimention);
 `;
-
-interface PlayableRectangleProps {
-    players: Player[];
-}
 
 const ParchisBoard: React.FC<PlayableRectangleProps> = ({ players }) => {
     // const initialCellNumber = React.useRef(34);

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { StartPointProps } from '../../interfaces/interfaces';
 
 const Rectangle = styled.div`
     width: 100%;
@@ -20,10 +21,6 @@ const CircleContainer = styled.div`
     border-radius: 200px;
     background-color: #f2f2f2;
 `;
-
-interface StartPointProps {
-    children: React.ReactNode;
-}
 
 const StartPoint: React.FC<StartPointProps> = ({ children }) => {
     return (

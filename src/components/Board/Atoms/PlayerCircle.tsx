@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Dice from './Dice';
 
 import { colors, Player } from '../../../data/data';
+import { PlayerCircleProps } from '../../../interfaces/interfaces';
 
 const Circle = styled.div`
     width: 40px;
@@ -17,12 +18,6 @@ const Circle = styled.div`
 const PlayerName = styled.div`
     position: absolute;
 `;
-
-interface PlayerCircleProps {
-    selected: boolean;
-    data: Player;
-    onClick?: () => void;
-}
 
 const PlayerCircle: React.FC<PlayerCircleProps> = ({
     selected = false,

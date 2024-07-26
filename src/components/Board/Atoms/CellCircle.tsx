@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { colors } from '../../../data/data';
+import { CellCircleProps } from '../../../interfaces/interfaces';
 
 type CircleProps = {
     $color: number | null;
@@ -14,10 +15,6 @@ const Circle = styled.div<CircleProps>`
     background-color: ${({ $color }) =>
         $color ? colors[$color as keyof typeof colors] : 'transparent'};
 `;
-
-interface CellCircleProps {
-    color: number | null;
-}
 
 const CellCircle: React.FC<CellCircleProps> = ({ color }) => {
     return <Circle $color={color}></Circle>;
