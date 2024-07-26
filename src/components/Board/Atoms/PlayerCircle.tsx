@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import Dice from './Dice';
+
 import { colors, Player } from '../../../data/data';
 
 const Circle = styled.div`
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     background-color: ${({ color }) => color};
     display: flex;
@@ -19,11 +21,13 @@ const PlayerName = styled.div`
 interface PlayerCircleProps {
     selected: boolean;
     data: Player;
+    onClick?: () => void;
 }
 
 const PlayerCircle: React.FC<PlayerCircleProps> = ({
     selected = false,
     data,
+    onClick,
 }) => {
     const [player, setPlayer] = React.useState<Player | null>(null);
 
@@ -33,7 +37,12 @@ const PlayerCircle: React.FC<PlayerCircleProps> = ({
 
     return (
         <>
-            <PlayerName>{data.name}</PlayerName>
+            <PlayerName>
+                {data.name}
+                <Dice />
+                {/* <button onClick={onClick}>throw dice</button> */}
+            </PlayerName>
+
             {player &&
                 player.pieces.map((_, i) => (
                     <Circle color={colors[player.color!]}>

@@ -7,7 +7,6 @@ function App() {
     const [playersData, setPlayersData] = React.useState<null | Player[]>(null);
     const [playersCount, setPlayersCount] = React.useState<null | number>(null);
     const [selectedColors, setSelectedColors] = React.useState<number[]>([]);
-    
 
     const [ready, setReady] = React.useState(false);
 
