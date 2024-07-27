@@ -4,12 +4,12 @@ import '@testing-library/jest-dom';
 import Dot from './Dot';
 
 describe('Dot component', () => {
-  it('renders correctly with given props', () => {
-    const { getByRole } = render(<Dot top="50%" left="50%" />);
-    const dotElement = getByRole("dot");
+    it('renders correctly with given props', () => {
+        const { getByRole } = render(<Dot top="50%" left="50%" />);
+        const dotElement = getByRole('dot');
 
-    expect(dotElement).toBeInTheDocument();
-    expect(dotElement).toHaveStyle(`
+        expect(dotElement).toBeInTheDocument();
+        expect(dotElement).toHaveStyle(`
       top: 50%;
       left: 50%;
       width: 20%;
@@ -19,5 +19,5 @@ describe('Dot component', () => {
       position: absolute;
       transform: translate(-50%, -50%);
     `);
-  });
+    });
 });

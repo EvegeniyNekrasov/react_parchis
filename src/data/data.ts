@@ -82,29 +82,7 @@ const verticalTopNumbers = [
     27,
 ];
 
-const verticalBottomNumbers = [
-    61,
-    null,
-    7,
-    62,
-    null,
-    6,
-    63,
-    null,
-    5,
-    64,
-    null,
-    4,
-    65,
-    null,
-    3,
-    66,
-    null,
-    2,
-    67,
-    68,
-    1,
-];
+const verticalBottomNumbers = [61, null, 7, 62, null, 6, 63, null, 5, 64, null, 4, 65, null, 3, 66, null, 2, 67, 68, 1];
 
 const horisontalLeftNumbers = [
     50,
@@ -154,11 +132,7 @@ const horisontalRightNumbers = [
     16,
 ];
 
-const createPlayableRecangle = (
-    safeSpots: number[],
-    cellNumbers: (number | null)[],
-    color: number,
-): Cell[] => {
+const createPlayableRecangle = (safeSpots: number[], cellNumbers: (number | null)[], color: number): Cell[] => {
     const cells: Cell[] = new Array(NUMBER_OF_CELLS);
     const safeSpotSet = new Set(safeSpots);
 
@@ -169,10 +143,7 @@ const createPlayableRecangle = (
             cellNumber: cellNumbers[i],
             safeSpot: safeSpotSet.has(i),
             startPoint: false,
-            color:
-                cellNumbers[i] === null
-                    ? colors[color as keyof typeof colors]
-                    : null,
+            color: cellNumbers[i] === null ? colors[color as keyof typeof colors] : null,
         };
     }
 
@@ -182,23 +153,23 @@ const createPlayableRecangle = (
 export const playableRectangleTopVertical: Cell[] = createPlayableRecangle(
     VERTICAL_TOP_SAFE_SPOTS,
     verticalTopNumbers,
-    PlayerColor.RED,
+    PlayerColor.RED
 );
 export const playableRectangleBottomVertical: Cell[] = createPlayableRecangle(
     VERTICAL_BOTTOM_SAFE_SPOTS,
     verticalBottomNumbers,
-    PlayerColor.YELLOW,
+    PlayerColor.YELLOW
 );
 
 export const playableRectangleLeftHorisontal: Cell[] = createPlayableRecangle(
     HORISONTAL_LEFT_SAFE_SPOTS,
     horisontalLeftNumbers,
-    PlayerColor.BLUE,
+    PlayerColor.BLUE
 );
 export const playableRectangleRightHorisontal: Cell[] = createPlayableRecangle(
     HORISONTAL_RIGHT_SAFE_SPOTS,
     horisontalRightNumbers,
-    PlayerColor.GREEN,
+    PlayerColor.GREEN
 );
 
 export const players: Player[] = createPlayers();
