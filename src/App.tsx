@@ -92,7 +92,7 @@ function App() {
         <div className="main">
             {!ready ? (
                 <Container width="100%" height="100%">
-                    <Container width="50%" height="100%" orientation='column'>
+                    <Container width="50%" height="100%" orientation="column">
                         <Text color="#000" size="1rem" text="paco" />
                         <RadioGroup>
                             <Radio
@@ -159,7 +159,6 @@ function App() {
                         ) : null}
                     </Container>
                 </Container>
-
             ) : null}
 
             {ready ? <ParchisBoard players={playersData} /> : null}

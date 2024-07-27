@@ -35,3 +35,18 @@ export interface RadioProps {
     color: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
+
+export interface ContainerProps {
+    children: React.ReactNode;
+    width: string;
+    height: string;
+    orientation?: 'row' | 'column';
+    'data-testid'?: string;
+}
+
+export interface TextProps {
+    text: string;
+    color?: string;
+    size?: string;
+    'data-testid'?: string;
+}

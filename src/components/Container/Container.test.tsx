@@ -13,7 +13,7 @@ describe('Container', () => {
 
         const testElement = screen.getByText('Test');
         expect(testElement).toBeInTheDocument();
-    })
+    });
 
     it('Applies the correct width and height', () => {
         render(
@@ -26,5 +26,4 @@ describe('Container', () => {
         expect(containerElement).toHaveStyle('width: 50%');
         expect(containerElement).toHaveStyle('height: 50%');
     });
-
 });

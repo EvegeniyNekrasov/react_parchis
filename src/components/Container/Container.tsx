@@ -1,14 +1,7 @@
 import styled from 'styled-components';
+import { ContainerProps } from '../../interfaces/interfaces';
 
-interface ContainerProps {
-    children: React.ReactNode;
-    width: string;
-    height: string;
-    orientation?: 'row' | 'column';
-    'data-testid'?: string;
-}
-
-const ContainerDiv = styled.div<{ width: string, height: string, orientation: string }>`
+const ContainerDiv = styled.div<{ width: string; height: string; orientation: string }>`
     width: ${(props) => props.width};
     height: ${(props) => props.height};
     background-color: #f8f9fa;
@@ -18,8 +11,18 @@ const ContainerDiv = styled.div<{ width: string, height: string, orientation: st
     gap: 1rem;
 `;
 
-const Container: React.FC<ContainerProps> = ({ children, width = "100%", height = "100%", orientation = "row" , ...props }) => {
-    return <ContainerDiv width={width} height={height} orientation={orientation} {...props}>{children}</ContainerDiv>;
+const Container: React.FC<ContainerProps> = ({
+    children,
+    width = '100%',
+    height = '100%',
+    orientation = 'row',
+    ...props
+}) => {
+    return (
+        <ContainerDiv width={width} height={height} orientation={orientation} {...props}>
+            {children}
+        </ContainerDiv>
+    );
 };
 
 export default Container;
