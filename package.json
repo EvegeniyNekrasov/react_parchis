@@ -2,6 +2,7 @@
     "name": "react_parchis",
     "private": true,
     "version": "0.0.0",
+    "description": "A React project of popular board game Parchis",
     "type": "module",
     "scripts": {
         "dev": "vite",
