@@ -22,7 +22,7 @@ const DotContainer = styled.div<DotContainerProps>`
 `;
 
 const Dot: React.FC<DotProps> = ({ top, left }) => {
-    return <DotContainer top={top} left={left} />;
+    return <DotContainer role="dot" top={top} left={left} />;
 };
 
 export default Dot;
