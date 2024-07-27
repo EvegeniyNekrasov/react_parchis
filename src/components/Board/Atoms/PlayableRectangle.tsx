@@ -40,10 +40,7 @@ const Rectangle = styled.div<ReactangleProps>`
     grid-template-rows: ${({ $row }) => $row};
 `;
 
-const PlayableRectangle: React.FC<PlayableRectangleProps> = ({
-    children,
-    index,
-}) => {
+const PlayableRectangle: React.FC<PlayableRectangleProps> = ({ children, index }) => {
     const { gridTemplateColumn, gridTemplateRow } = getGridTemplate(index);
     return (
         <Rectangle $column={gridTemplateColumn} $row={gridTemplateRow}>

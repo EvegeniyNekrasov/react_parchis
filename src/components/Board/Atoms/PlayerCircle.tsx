@@ -19,11 +19,7 @@ const PlayerName = styled.div`
     position: absolute;
 `;
 
-const PlayerCircle: React.FC<PlayerCircleProps> = ({
-    selected = false,
-    data,
-    onClick,
-}) => {
+const PlayerCircle: React.FC<PlayerCircleProps> = ({ selected = false, data, onClick }) => {
     const [player, setPlayer] = React.useState<Player | null>(null);
 
     React.useEffect(() => {

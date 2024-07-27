@@ -58,19 +58,12 @@ const PrincipalBoard = styled.div`
 const ParchisBoard: React.FC<PlayableRectangleProps> = ({ players }) => {
     // const initialCellNumber = React.useRef(34);
 
-    const [rectangleBottomVertical, setReactangleBottomVertical] =
-        React.useState<Cell[] | null>([]);
-    const [rectangleTopVertical, setReactangleTopVertical] = React.useState<
-        Cell[] | null
-    >([]);
-    const [rectangleLeftHorizontal, setReactangleLeftHorizontal] =
-        React.useState<Cell[] | null>([]);
-    const [rectangleRightHorizontal, setReactangleRightHorizontal] =
-        React.useState<Cell[] | null>([]);
+    const [rectangleBottomVertical, setReactangleBottomVertical] = React.useState<Cell[] | null>([]);
+    const [rectangleTopVertical, setReactangleTopVertical] = React.useState<Cell[] | null>([]);
+    const [rectangleLeftHorizontal, setReactangleLeftHorizontal] = React.useState<Cell[] | null>([]);
+    const [rectangleRightHorizontal, setReactangleRightHorizontal] = React.useState<Cell[] | null>([]);
 
-    const [playerThrows, setPlayerThrows] = React.useState<
-        playerThrowsDice[] | null
-    >([]);
+    const [playerThrows, setPlayerThrows] = React.useState<playerThrowsDice[] | null>([]);
 
     const [playersData, setPlayersData] = React.useState<null | Player[]>(null);
 
@@ -125,9 +118,7 @@ const ParchisBoard: React.FC<PlayableRectangleProps> = ({ players }) => {
                                         <PlayerCircle
                                             selected={i === 0}
                                             data={item}
-                                            onClick={() =>
-                                                handleThrowDice(item)
-                                            }
+                                            onClick={() => handleThrowDice(item)}
                                         />
                                     ))}
                         </StartPoint>
@@ -145,20 +136,12 @@ const ParchisBoard: React.FC<PlayableRectangleProps> = ({ players }) => {
                                                     rectangle ${cell.safeSpot ? 'safe' : ''}
                                                     `}
                                                 style={{
-                                                    backgroundColor: cell.color
-                                                        ? cell.color
-                                                        : 'transparent',
+                                                    backgroundColor: cell.color ? cell.color : 'transparent',
                                                 }}
                                             >
-                                                <div className="rectangle-number">
-                                                    {cell.cellNumber}
-                                                </div>
-                                                {cell.p1 && (
-                                                    <CellCircle color={null} />
-                                                )}
-                                                {cell.p2 && (
-                                                    <CellCircle color={null} />
-                                                )}
+                                                <div className="rectangle-number">{cell.cellNumber}</div>
+                                                {cell.p1 && <CellCircle color={null} />}
+                                                {cell.p2 && <CellCircle color={null} />}
                                             </div>
                                         ))}
                                 </PlayableRectangle>
@@ -166,102 +149,57 @@ const ParchisBoard: React.FC<PlayableRectangleProps> = ({ players }) => {
                             {index === 3 && (
                                 <PlayableRectangle index={index}>
                                     {rectangleLeftHorizontal &&
-                                        rectangleLeftHorizontal.map(
-                                            (cell, i) => (
-                                                <div
-                                                    key={i}
-                                                    className={`rectangle ${cell.safeSpot ? 'safe' : ''}`}
-                                                    style={{
-                                                        backgroundColor:
-                                                            cell.color
-                                                                ? cell.color
-                                                                : 'transparent',
-                                                    }}
-                                                >
-                                                    <div className="rectangle-number">
-                                                        {cell.cellNumber}
-                                                    </div>
-                                                    {cell.p1 && (
-                                                        <CellCircle
-                                                            color={null}
-                                                        />
-                                                    )}
-                                                    {cell.p2 && (
-                                                        <CellCircle
-                                                            color={null}
-                                                        />
-                                                    )}
-                                                </div>
-                                            ),
-                                        )}
+                                        rectangleLeftHorizontal.map((cell, i) => (
+                                            <div
+                                                key={i}
+                                                className={`rectangle ${cell.safeSpot ? 'safe' : ''}`}
+                                                style={{
+                                                    backgroundColor: cell.color ? cell.color : 'transparent',
+                                                }}
+                                            >
+                                                <div className="rectangle-number">{cell.cellNumber}</div>
+                                                {cell.p1 && <CellCircle color={null} />}
+                                                {cell.p2 && <CellCircle color={null} />}
+                                            </div>
+                                        ))}
                                 </PlayableRectangle>
                             )}
 
                             {index === 5 && (
                                 <PlayableRectangle index={index}>
                                     {rectangleRightHorizontal &&
-                                        rectangleRightHorizontal.map(
-                                            (cell, i) => (
-                                                <div
-                                                    key={i}
-                                                    className={`rectangle ${cell.safeSpot ? 'safe' : ''}`}
-                                                    style={{
-                                                        backgroundColor:
-                                                            cell.color
-                                                                ? cell.color
-                                                                : 'transparent',
-                                                    }}
-                                                >
-                                                    <div className="rectangle-number">
-                                                        {cell.cellNumber}
-                                                    </div>
-                                                    {cell.p1 && (
-                                                        <CellCircle
-                                                            color={null}
-                                                        />
-                                                    )}
-                                                    {cell.p2 && (
-                                                        <CellCircle
-                                                            color={null}
-                                                        />
-                                                    )}
-                                                </div>
-                                            ),
-                                        )}
+                                        rectangleRightHorizontal.map((cell, i) => (
+                                            <div
+                                                key={i}
+                                                className={`rectangle ${cell.safeSpot ? 'safe' : ''}`}
+                                                style={{
+                                                    backgroundColor: cell.color ? cell.color : 'transparent',
+                                                }}
+                                            >
+                                                <div className="rectangle-number">{cell.cellNumber}</div>
+                                                {cell.p1 && <CellCircle color={null} />}
+                                                {cell.p2 && <CellCircle color={null} />}
+                                            </div>
+                                        ))}
                                 </PlayableRectangle>
                             )}
 
                             {index === 7 && (
                                 <PlayableRectangle index={index}>
                                     {rectangleBottomVertical &&
-                                        rectangleBottomVertical.map(
-                                            (cell, i) => (
-                                                <div
-                                                    key={i}
-                                                    className={`rectangle ${cell.safeSpot ? 'safe' : ''}`}
-                                                    style={{
-                                                        backgroundColor:
-                                                            cell.color
-                                                                ? cell.color
-                                                                : 'transparent',
-                                                    }}
-                                                >
-                                                    <div className="rectangle-number">
-                                                        {cell.cellNumber}
-                                                    </div>
-                                                    {cell.p1 && (
-                                                        <CellCircle
-                                                            color={null}
-                                                        />
-                                                    )}
-                                                    {cell.p2 && (
-                                                        <CellCircle
-                                                            color={null}
-                                                        />
-                                                    )}
-                                                </div>
-                                            ),
-                                        )}
+                                        rectangleBottomVertical.map((cell, i) => (
+                                            <div
+                                                key={i}
+                                                className={`rectangle ${cell.safeSpot ? 'safe' : ''}`}
+                                                style={{
+                                                    backgroundColor: cell.color ? cell.color : 'transparent',
+                                                }}
+                                            >
+                                                <div className="rectangle-number">{cell.cellNumber}</div>
+                                                {cell.p1 && <CellCircle color={null} />}
+                                                {cell.p2 && <CellCircle color={null} />}
+                                            </div>
+                                        ))}
                                 </PlayableRectangle>
                             )}
                         </>

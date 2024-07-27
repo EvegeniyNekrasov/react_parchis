@@ -16,10 +16,7 @@ function App() {
         setPlayersData(p);
     };
 
-    const setPlayerName = (
-        e: React.ChangeEvent<HTMLInputElement>,
-        index: number,
-    ) => {
+    const setPlayerName = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
         if (!playersData) return;
         const newPlayersData = playersData.slice();
         newPlayersData[index].name = e.target.value;
@@ -52,9 +49,7 @@ function App() {
         const currentColor = newPlayersData[playerIndex].color;
         let newSelectedColors = selectedColors;
         if (currentColor !== undefined) {
-            newSelectedColors = selectedColors.filter(
-                (color) => color !== currentColor,
-            );
+            newSelectedColors = selectedColors.filter((color) => color !== currentColor);
         }
 
         // Asignar el nuevo color y actualizar el estado
@@ -81,91 +76,47 @@ function App() {
                     <span>Descripción cualquiera bla bla bla...</span>
                     <div>
                         <label>
-                            <input
-                                onChange={handlePlayersCount}
-                                type="radio"
-                                name="player"
-                                value={2}
-                            />
-                            2
+                            <input onChange={handlePlayersCount} type="radio" name="player" value={2} />2
                         </label>
                         <label>
-                            <input
-                                onChange={handlePlayersCount}
-                                type="radio"
-                                name="player"
-                                value={3}
-                            />
-                            3
+                            <input onChange={handlePlayersCount} type="radio" name="player" value={3} />3
                         </label>
                         <label>
-                            <input
-                                onChange={handlePlayersCount}
-                                type="radio"
-                                name="player"
-                                value={4}
-                            />
-                            4
+                            <input onChange={handlePlayersCount} type="radio" name="player" value={4} />4
                         </label>
                     </div>
                     {playersData && playersCount ? (
                         <div>
-                            {Array.from({ length: playersCount }).map(
-                                (_, playerIndex) => (
-                                    <div key={playerIndex}>
-                                        <label>
-                                            <p>
-                                                <span>Player name: </span>
-                                                <span>
-                                                    {playersData
-                                                        ? playersData[
-                                                              playerIndex
-                                                          ].name
-                                                        : `Player ${playerIndex + 1}`}
-                                                </span>
-                                            </p>
-                                            <input
-                                                type="text"
-                                                onChange={(e) =>
-                                                    setPlayerName(
-                                                        e,
-                                                        playerIndex,
-                                                    )
-                                                }
-                                            />
-                                            {Object.entries(colors).map(
-                                                ([_, color], colorIndex) => (
-                                                    <div key={colorIndex}>
-                                                        <label>
-                                                            <input
-                                                                type="radio"
-                                                                name={`color-${playerIndex}`}
-                                                                value={
-                                                                    colorIndex
-                                                                }
-                                                                onChange={() =>
-                                                                    setPlayerColor(
-                                                                        colorIndex,
-                                                                        playerIndex,
-                                                                    )
-                                                                }
-                                                                disabled={isColorDisabled(
-                                                                    colorIndex,
-                                                                )}
-                                                            />
-                                                            {color}
-                                                        </label>
-                                                    </div>
-                                                ),
-                                            )}
-                                        </label>
-                                    </div>
-                                ),
-                            )}
-                            <button
-                                onClick={() => setReady(true)}
-                                disabled={isReadyDisabled()}
-                            >
+                            {Array.from({ length: playersCount }).map((_, playerIndex) => (
+                                <div key={playerIndex}>
+                                    <label>
+                                        <p>
+                                            <span>Player name: </span>
+                                            <span>
+                                                {playersData
+                                                    ? playersData[playerIndex].name
+                                                    : `Player ${playerIndex + 1}`}
+                                            </span>
+                                        </p>
+                                        <input type="text" onChange={(e) => setPlayerName(e, playerIndex)} />
+                                        {Object.entries(colors).map(([_, color], colorIndex) => (
+                                            <div key={colorIndex}>
+                                                <label>
+                                                    <input
+                                                        type="radio"
+                                                        name={`color-${playerIndex}`}
+                                                        value={colorIndex}
+                                                        onChange={() => setPlayerColor(colorIndex, playerIndex)}
+                                                        disabled={isColorDisabled(colorIndex)}
+                                                    />
+                                                    {color}
+                                                </label>
+                                            </div>
+                                        ))}
+                                    </label>
+                                </div>
+                            ))}
+                            <button onClick={() => setReady(true)} disabled={isReadyDisabled()}>
                                 Ready
                             </button>
                         </div>

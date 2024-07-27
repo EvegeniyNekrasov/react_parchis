@@ -11,9 +11,7 @@ const Cell = styled.div`
     height: calc(var(--board-dimention) / 3);
 `;
 
-const MainInnerRectangle: React.FC<MainInnerRectangleProps> = ({
-    children,
-}) => {
+const MainInnerRectangle: React.FC<MainInnerRectangleProps> = ({ children }) => {
     return <Cell>{children}</Cell>;
 };
 
