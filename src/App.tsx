@@ -5,6 +5,8 @@ import Radio from './components/Radio/Radio';
 import RadioGroup from './components/RadioGroup/RadioGroup';
 
 import './App.css';
+import Container from './components/Container/Container';
+import Text from './components/Text/Text';
 
 const getColorName = (color: string) => {
     switch (color) {
@@ -19,7 +21,7 @@ const getColorName = (color: string) => {
         default:
             return '';
     }
-}
+};
 
 function App() {
     const [playersData, setPlayersData] = React.useState<null | Player[]>(null);
@@ -89,72 +91,75 @@ function App() {
     return (
         <div className="main">
             {!ready ? (
-                <div>
-                    <h1>Parchis</h1>
-                    <span>Descripción cualquiera bla bla bla...</span>
-                    <RadioGroup>
-                        <Radio
-                            name="player"
-                            value={2}
-                            onChange={(e) => handlePlayersCount(e)}
-                            text="dos"
-                            color='black'
-                            disabled={false}
-                        />
-                        <Radio
-                            name="player"
-                            value={3}
-                            onChange={(e) => handlePlayersCount(e)}
-                            text="tres"
-                            color="black"
-                            disabled={false}
-                        />
-                        <Radio
-                            name="player"
-                            value={4}
-                            onChange={(e) => handlePlayersCount(e)}
-                            text="cuatro"
-                            color="black"
-                            disabled={false}
-                        />
-                    </RadioGroup>
-                    {playersData && playersCount ? (
-                        <div>
-                            {Array.from({ length: playersCount }).map((_, playerIndex) => (
-                                <div key={playerIndex}>
-                                    <label>
-                                        <p>
-                                            <span>Player name: </span>
-                                            <span>
-                                                {playersData
-                                                    ? playersData[playerIndex].name
-                                                    : `Player ${playerIndex + 1}`}
-                                            </span>
-                                        </p>
-                                        <input type="text" onChange={(e) => setPlayerName(e, playerIndex)} />
-                                        <RadioGroup>
+                <Container width="100%" height="100%">
+                    <Container width="50%" height="100%" orientation='column'>
+                        <Text color="#000" size="1rem" text="paco" />
+                        <RadioGroup>
+                            <Radio
+                                name="player"
+                                value={2}
+                                onChange={(e) => handlePlayersCount(e)}
+                                text="dos"
+                                color="black"
+                                disabled={false}
+                            />
+                            <Radio
+                                name="player"
+                                value={3}
+                                onChange={(e) => handlePlayersCount(e)}
+                                text="tres"
+                                color="black"
+                                disabled={false}
+                            />
+                            <Radio
+                                name="player"
+                                value={4}
+                                onChange={(e) => handlePlayersCount(e)}
+                                text="cuatro"
+                                color="black"
+                                disabled={false}
+                            />
+                        </RadioGroup>
+                    </Container>
+                    <Container width="50%" height="100%">
+                        {playersData && playersCount ? (
+                            <div>
+                                {Array.from({ length: playersCount }).map((_, playerIndex) => (
+                                    <div key={playerIndex}>
+                                        <label>
+                                            <p>
+                                                <span>Player name: </span>
+                                                <span>
+                                                    {playersData
+                                                        ? playersData[playerIndex].name
+                                                        : `Player ${playerIndex + 1}`}
+                                                </span>
+                                            </p>
+                                            <input type="text" onChange={(e) => setPlayerName(e, playerIndex)} />
+                                            <RadioGroup>
+                                                {Object.entries(colors).map(([_, color], colorIndex) => (
+                                                    <Radio
+                                                        key={colorIndex}
+                                                        name={`color-${playerIndex}`}
+                                                        value={colorIndex}
+                                                        onChange={() => setPlayerColor(colorIndex, playerIndex)}
+                                                        disabled={isColorDisabled(colorIndex)}
+                                                        text={getColorName(color)}
+                                                        color={color}
+                                                    />
+                                                ))}
+                                            </RadioGroup>
+                                        </label>
+                                    </div>
+                                ))}
+                                <button onClick={() => setReady(true)} disabled={isReadyDisabled()}>
+                                    Ready
+                                </button>
+                            </div>
+                        ) : null}
+                    </Container>
+                </Container>
 
-                                            {Object.entries(colors).map(([_, color], colorIndex) => (
-                                                <Radio
-                                                    key={colorIndex}
-                                                    name={`color-${playerIndex}`}
-                                                    value={colorIndex}
-                                                    onChange={() => setPlayerColor(colorIndex, playerIndex)}
-                                                    disabled={isColorDisabled(colorIndex)}
-                                                    text={getColorName(color)}
-                                                    color={color}
-                                                />
-                                            ))}
-                                        </RadioGroup>
-                                    </label>
-                                </div>
-                            ))}
-                            <button onClick={() => setReady(true)} disabled={isReadyDisabled()}>
-                                Ready
-                            </button>
-                        </div>
-                    ) : null}
-                </div>
             ) : null}
 
             {ready ? <ParchisBoard players={playersData} /> : null}
