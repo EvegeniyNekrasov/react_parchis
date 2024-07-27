@@ -6,10 +6,10 @@ enum PlayerColor {
 }
 
 export const colors = {
-    [PlayerColor.RED]: 'red',
-    [PlayerColor.GREEN]: 'green',
-    [PlayerColor.BLUE]: 'blue',
-    [PlayerColor.YELLOW]: 'yellow',
+    [PlayerColor.RED]: '#F40000',
+    [PlayerColor.GREEN]: '#475841',
+    [PlayerColor.BLUE]: '#0A2463',
+    [PlayerColor.YELLOW]: '#F7B538',
 };
 
 export type Player = {

@@ -26,3 +26,12 @@ export interface PlayerCircleProps {
 export interface StartPointProps {
     children: React.ReactNode;
 }
+
+export interface RadioProps {
+    name: string;
+    value: number | string;
+    disabled: boolean;
+    text: string;
+    color: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}

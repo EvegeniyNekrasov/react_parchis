@@ -1,7 +1,25 @@
 import React from 'react';
 import ParchisBoard from './components/ParchisBoard';
 import { players, colors, Player } from './data/data';
+import Radio from './components/Radio/Radio';
+import RadioGroup from './components/RadioGroup/RadioGroup';
+
 import './App.css';
+
+const getColorName = (color: string) => {
+    switch (color) {
+        case colors[0]:
+            return 'Red';
+        case colors[1]:
+            return 'Green';
+        case colors[2]:
+            return 'Blue';
+        case colors[3]:
+            return 'Yellow';
+        default:
+            return '';
+    }
+}
 
 function App() {
     const [playersData, setPlayersData] = React.useState<null | Player[]>(null);
@@ -74,17 +92,32 @@ function App() {
                 <div>
                     <h1>Parchis</h1>
                     <span>Descripción cualquiera bla bla bla...</span>
-                    <div>
-                        <label>
-                            <input onChange={handlePlayersCount} type="radio" name="player" value={2} />2
-                        </label>
-                        <label>
-                            <input onChange={handlePlayersCount} type="radio" name="player" value={3} />3
-                        </label>
-                        <label>
-                            <input onChange={handlePlayersCount} type="radio" name="player" value={4} />4
-                        </label>
-                    </div>
+                    <RadioGroup>
+                        <Radio
+                            name="player"
+                            value={2}
+                            onChange={(e) => handlePlayersCount(e)}
+                            text="dos"
+                            color='black'
+                            disabled={false}
+                        />
+                        <Radio
+                            name="player"
+                            value={3}
+                            onChange={(e) => handlePlayersCount(e)}
+                            text="tres"
+                            color="black"
+                            disabled={false}
+                        />
+                        <Radio
+                            name="player"
+                            value={4}
+                            onChange={(e) => handlePlayersCount(e)}
+                            text="cuatro"
+                            color="black"
+                            disabled={false}
+                        />
+                    </RadioGroup>
                     {playersData && playersCount ? (
                         <div>
                             {Array.from({ length: playersCount }).map((_, playerIndex) => (
@@ -99,20 +132,20 @@ function App() {
                                             </span>
                                         </p>
                                         <input type="text" onChange={(e) => setPlayerName(e, playerIndex)} />
-                                        {Object.entries(colors).map(([_, color], colorIndex) => (
-                                            <div key={colorIndex}>
-                                                <label>
-                                                    <input
-                                                        type="radio"
-                                                        name={`color-${playerIndex}`}
-                                                        value={colorIndex}
-                                                        onChange={() => setPlayerColor(colorIndex, playerIndex)}
-                                                        disabled={isColorDisabled(colorIndex)}
-                                                    />
-                                                    {color}
-                                                </label>
-                                            </div>
-                                        ))}
+                                        <RadioGroup>
+
+                                            {Object.entries(colors).map(([_, color], colorIndex) => (
+                                                <Radio
+                                                    key={colorIndex}
+                                                    name={`color-${playerIndex}`}
+                                                    value={colorIndex}
+                                                    onChange={() => setPlayerColor(colorIndex, playerIndex)}
+                                                    disabled={isColorDisabled(colorIndex)}
+                                                    text={getColorName(color)}
+                                                    color={color}
+                                                />
+                                            ))}
+                                        </RadioGroup>
                                     </label>
                                 </div>
                             ))}
