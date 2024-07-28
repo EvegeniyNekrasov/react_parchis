@@ -41,6 +41,9 @@ export interface ContainerProps {
     width: string;
     height: string;
     orientation?: 'row' | 'column';
+    bgColor?: string;
+    padding?: string;
+    gap?: string;
     'data-testid'?: string;
 }
 
@@ -49,4 +52,14 @@ export interface TextProps {
     color?: string;
     size?: string;
     'data-testid'?: string;
+}
+
+export interface StartScreenProps {
+    playersData: null | Player[];
+    playersCount: null | number;
+    selectedColors: number[];
+    handlePlayersCount: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    setPlayerName: (e: React.ChangeEvent<HTMLInputElement>, index: number) => void;
+    setPlayerColor: (colorIndex: number, playerIndex: number) => void;
+    setReady: (ready: boolean) => void;
 }

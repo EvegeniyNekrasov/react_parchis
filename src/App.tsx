@@ -1,27 +1,9 @@
 import React from 'react';
 import ParchisBoard from './components/ParchisBoard';
-import { players, colors, Player } from './data/data';
-import Radio from './components/Radio/Radio';
-import RadioGroup from './components/RadioGroup/RadioGroup';
+import { players, Player } from './data/data';
+import StartScreen from './components/StartScreen/StartScreen';
 
 import './App.css';
-import Container from './components/Container/Container';
-import Text from './components/Text/Text';
-
-const getColorName = (color: string) => {
-    switch (color) {
-        case colors[0]:
-            return 'Red';
-        case colors[1]:
-            return 'Green';
-        case colors[2]:
-            return 'Blue';
-        case colors[3]:
-            return 'Yellow';
-        default:
-            return '';
-    }
-};
 
 function App() {
     const [playersData, setPlayersData] = React.useState<null | Player[]>(null);
@@ -79,86 +61,20 @@ function App() {
         setSelectedColors([...newSelectedColors, colorIndex]);
     };
 
-    const isColorDisabled = (colorIndex: number) => {
-        return selectedColors.includes(colorIndex);
-    };
-
-    const isReadyDisabled = () => {
-        if (!playersData || !playersCount) return true;
-        return playersData.some((player) => player.color === null);
-    };
-
     return (
         <div className="main">
             {!ready ? (
-                <Container width="100%" height="100%">
-                    <Container width="50%" height="100%" orientation="column">
-                        <Text color="#000" size="1rem" text="paco" />
-                        <RadioGroup>
-                            <Radio
-                                name="player"
-                                value={2}
-                                onChange={(e) => handlePlayersCount(e)}
-                                text="dos"
-                                color="black"
-                                disabled={false}
-                            />
-                            <Radio
-                                name="player"
-                                value={3}
-                                onChange={(e) => handlePlayersCount(e)}
-                                text="tres"
-                                color="black"
-                                disabled={false}
-                            />
-                            <Radio
-                                name="player"
-                                value={4}
-                                onChange={(e) => handlePlayersCount(e)}
-                                text="cuatro"
-                                color="black"
-                                disabled={false}
-                            />
-                        </RadioGroup>
-                    </Container>
-                    <Container width="50%" height="100%">
-                        {playersData && playersCount ? (
-                            <div>
-                                {Array.from({ length: playersCount }).map((_, playerIndex) => (
-                                    <div key={playerIndex}>
-                                        <label>
-                                            <p>
-                                                <span>Player name: </span>
-                                                <span>
-                                                    {playersData
-                                                        ? playersData[playerIndex].name
-                                                        : `Player ${playerIndex + 1}`}
-                                                </span>
-                                            </p>
-                                            <input type="text" onChange={(e) => setPlayerName(e, playerIndex)} />
-                                            <RadioGroup>
-                                                {Object.entries(colors).map(([_, color], colorIndex) => (
-                                                    <Radio
-                                                        key={colorIndex}
-                                                        name={`color-${playerIndex}`}
-                                                        value={colorIndex}
-                                                        onChange={() => setPlayerColor(colorIndex, playerIndex)}
-                                                        disabled={isColorDisabled(colorIndex)}
-                                                        text={getColorName(color)}
-                                                        color={color}
-                                                    />
-                                                ))}
-                                            </RadioGroup>
-                                        </label>
-                                    </div>
-                                ))}
-                                <button onClick={() => setReady(true)} disabled={isReadyDisabled()}>
-                                    Ready
-                                </button>
-                            </div>
-                        ) : null}
-                    </Container>
-                </Container>
+                <StartScreen 
+                    playersData={playersData}
+                    playersCount={playersCount}
+                    handlePlayersCount={handlePlayersCount}
+                    setPlayerName={setPlayerName}
+                    setPlayerColor={setPlayerColor}
+                   
+                    ready={ready}
+                    setReady={setReady}
+                    selectedColors={selectedColors}
+                />
             ) : null}
 
             {ready ? <ParchisBoard players={playersData} /> : null}
