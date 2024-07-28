@@ -1,7 +1,7 @@
 import React from 'react';
-import ParchisBoard from './components/ParchisBoard';
-import { players, Player } from './data/data';
-import StartScreen from './components/StartScreen/StartScreen';
+import ParchisBoard from '@/components/ParchisBoard';
+import { players, Player } from '@/data/data';
+import StartScreen from '@/components/StartScreen/StartScreen';
 
 import './App.css';
 

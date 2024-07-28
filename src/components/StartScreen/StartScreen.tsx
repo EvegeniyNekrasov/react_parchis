@@ -1,12 +1,12 @@
 import React from 'react';
-import Container from '../Container/Container';
-import RadioGroup from '../RadioGroup/RadioGroup';
-import Radio from '../Radio/Radio';
-import { colors } from '../../data/data';
-import Text from '../Text/Text';
-import { StartScreenProps } from '../../interfaces/interfaces';
-import TextField from '../TextField/TextField';
-import Button from '../Button/Button';
+import Container from '@/lib/Container/Container';
+import RadioGroup from '@/lib/RadioGroup/RadioGroup';
+import Radio from '@/lib/Radio/Radio';
+import { colors } from '@/data/data';
+import Text from '@/lib/Text/Text';
+import { StartScreenProps } from '@/interfaces/interfaces';
+import TextField from '@/lib/TextField/TextField';
+import Button from '@/lib/Button/Button';
 
 const getColorName = (color: string) => {
     switch (color) {
@@ -84,7 +84,7 @@ const StartScreen: React.FC<StartScreenProps> = ({ ...props }) => {
                                             <TextField
                                                 placeholder="select player name"
                                                 onChange={(e) => props.setPlayerName(e, playerIndex)}
-                                                value={props.playersData ? props.playersData[playerIndex].name : ""}
+                                                value={props.playersData ? props.playersData[playerIndex].name : ''}
                                                 icon
                                             />
                                             <RadioGroup>

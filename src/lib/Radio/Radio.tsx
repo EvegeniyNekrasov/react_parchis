@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { RadioProps } from '../../interfaces/interfaces';
+import { RadioProps } from '@interfaces/interfaces';
 
 const Label = styled.label`
     display: flex;

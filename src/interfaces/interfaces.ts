@@ -1,4 +1,4 @@
-import { Player } from '../data/data';
+import { Player } from '@/data/data';
 
 // export interface PlayableRectangleProps {
 //     players: Player[];

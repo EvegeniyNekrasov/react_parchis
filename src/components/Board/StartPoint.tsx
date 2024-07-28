@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { StartPointProps } from '../../interfaces/interfaces';
+import { StartPointProps } from '@interfaces/interfaces';
 
 const Rectangle = styled.div`
     width: 100%;

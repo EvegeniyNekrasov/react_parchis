@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { MainInnerRectangleProps } from '../../../interfaces/interfaces';
+import { MainInnerRectangleProps } from '@/interfaces/interfaces';
 
 const Cell = styled.div`
     display: flex;

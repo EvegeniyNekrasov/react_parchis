@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import StartPoint from './Board/StartPoint';
-import PlayerCircle from './Board/Atoms/PlayerCircle';
-import MainInnerRectangle from './Board/Atoms/MainInnerRectangle';
-import PlayableRectangle from './Board/Atoms/PlayableRectangle';
+import StartPoint from '@/components/Board/StartPoint';
+import PlayerCircle from '@/components/Board/Atoms/PlayerCircle';
+import MainInnerRectangle from '@/components/Board/Atoms/MainInnerRectangle';
+import PlayableRectangle from '@/components/Board/Atoms/PlayableRectangle';
 
 import {
     boardRectangle,
@@ -76,7 +76,6 @@ const ParchisBoard: React.FC<PlayableRectangleProps> = ({ players }) => {
         setPlayersData(players);
 
         const playerThrowsArray: playerThrowsDice[] = [];
-
 
         if (players === null) return;
 

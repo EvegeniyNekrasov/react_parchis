@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import Dice from './Dice';
 
-import { colors, Player } from '../../../data/data';
-import { PlayerCircleProps } from '../../../interfaces/interfaces';
+import { colors, Player } from '@/data/data';
+import { PlayerCircleProps } from '@/interfaces/interfaces';
 
 const Circle = styled.div`
     width: 40px;

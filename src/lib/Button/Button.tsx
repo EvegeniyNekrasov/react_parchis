@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ButtonProps } from '../../interfaces/interfaces';
+import { ButtonProps } from '@interfaces/interfaces';
 
 const ButtonContainer = styled.button<{
     $width: string;
