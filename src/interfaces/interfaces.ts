@@ -1,8 +1,8 @@
 import { Player } from '../data/data';
 
-export interface PlayableRectangleProps {
-    players: Player[];
-}
+// export interface PlayableRectangleProps {
+//     players: Player[];
+// }
 
 export interface CellCircleProps {
     color: number | null;
@@ -15,6 +15,7 @@ export interface MainInnerRectangleProps {
 
 export interface PlayableRectangleProps {
     children: React.ReactNode;
+    players: Player[] | null;
     index: number;
 }
 
@@ -58,6 +59,7 @@ export interface TextProps {
 export interface StartScreenProps {
     playersData: null | Player[];
     playersCount: null | number;
+    ready: boolean;
     selectedColors: number[];
     handlePlayersCount: (e: React.ChangeEvent<HTMLInputElement>) => void;
     setPlayerName: (e: React.ChangeEvent<HTMLInputElement>, index: number) => void;

@@ -37,7 +37,8 @@ const StartScreen: React.FC<StartScreenProps> = ({ ...props }) => {
         <>
             <Container width="100%" height="100%">
                 <Container width="50%" height="100%" orientation="column" bgColor="white" padding="20px">
-                    <Text color="#000" size="1rem" text="paco" />
+                    <Text color="#000" size="1.2rem" text="Select number of oponents" />
+                    <Text color="#000" size="1rem" text="Número de jugadores:" />
                     <RadioGroup>
                         <Radio
                             name="player"
@@ -83,6 +84,7 @@ const StartScreen: React.FC<StartScreenProps> = ({ ...props }) => {
                                             <TextField
                                                 placeholder="select player name"
                                                 onChange={(e) => props.setPlayerName(e, playerIndex)}
+                                                value={props.playersData ? props.playersData[playerIndex].name : ""}
                                                 icon
                                             />
                                             <RadioGroup>

@@ -20,12 +20,13 @@ const TextField: React.FC<TextFieldProps> = ({
     type = 'text',
     width = '100%',
     height = 'auto',
+    onChange,
     ...props
 }) => {
     return (
         <Container width="100%" height="auto">
             {icon ? <UserCircle data-testid="icon" size={34} /> : null}
-            <Input value={value} type={type} $width={width} $height={height} {...props} />
+            <Input onChange={onChange} value={value} type={type} $width={width} $height={height} {...props} />
         </Container>
     );
 };

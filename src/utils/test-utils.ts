@@ -7,7 +7,6 @@
  * @throws {Error} Throws an error if the hex color format is invalid or if the alpha value is out of range.
  */
 export const hexToRgba = (hex: string, alpha: number = 1): string => {
-
     hex = hex.replace(/^#/, '');
     let r: number, g: number, b: number;
     const RADIX: number = 16;
@@ -47,7 +46,7 @@ type Rgb = {
     red: number;
     green: number;
     blue: number;
-}
+};
 
 enum hexChartPosition {
     START = 0,

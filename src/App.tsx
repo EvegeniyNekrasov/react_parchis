@@ -22,9 +22,7 @@ function App() {
         if (!playersData) return;
         const newPlayersData = playersData.slice();
         newPlayersData[index].name = e.target.value;
-        if (e.target.value === '') {
-            newPlayersData[index].name = `Player ${index + 1}`;
-        }
+        // TODO: validar si el nombre está vacío, que hacer?
         setPlayersData(newPlayersData);
     };
 

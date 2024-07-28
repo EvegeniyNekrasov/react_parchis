@@ -77,6 +77,9 @@ const ParchisBoard: React.FC<PlayableRectangleProps> = ({ players }) => {
 
         const playerThrowsArray: playerThrowsDice[] = [];
 
+
+        if (players === null) return;
+
         players.forEach((player) => {
             playerThrowsArray.push({
                 name: player.name,
