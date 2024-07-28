@@ -39,4 +39,4 @@ describe('Button', () => {
         const buttonElement = screen.getByText('Test');
         expect(buttonElement).toBeDisabled();
     });
-})
+});

@@ -6,6 +6,7 @@ export interface PlayableRectangleProps {
 
 export interface CellCircleProps {
     color: number | null;
+    'data-testid'?: string;
 }
 
 export interface MainInnerRectangleProps {
@@ -77,9 +78,9 @@ export interface TextFieldProps {
     required?: boolean;
     'data-testid'?: string;
     disabled?: boolean;
-  }
+}
 
-  export interface ButtonProps {
+export interface ButtonProps {
     text: string;
     width?: string;
     height?: string;

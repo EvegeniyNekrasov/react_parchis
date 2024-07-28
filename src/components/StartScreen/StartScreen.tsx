@@ -80,7 +80,11 @@ const StartScreen: React.FC<StartScreenProps> = ({ ...props }) => {
                                                         : `Player ${playerIndex + 1}`}
                                                 </span>
                                             </p>
-                                            <TextField placeholder='select player name' onChange={(e) => props.setPlayerName(e, playerIndex)} icon />
+                                            <TextField
+                                                placeholder="select player name"
+                                                onChange={(e) => props.setPlayerName(e, playerIndex)}
+                                                icon
+                                            />
                                             <RadioGroup>
                                                 {Object.entries(colors).map(([_, color], colorIndex) => (
                                                     <Radio
@@ -98,7 +102,12 @@ const StartScreen: React.FC<StartScreenProps> = ({ ...props }) => {
                                     </label>
                                 </div>
                             ))}
-                            <Button text="ready" height='30px' onClick={() => props.setReady(true)} disabled={isReadyDisabled()} />
+                            <Button
+                                text="ready"
+                                height="30px"
+                                onClick={() => props.setReady(true)}
+                                disabled={isReadyDisabled()}
+                            />
                         </Container>
                     ) : null}
                 </Container>

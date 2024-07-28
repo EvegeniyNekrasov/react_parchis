@@ -14,7 +14,9 @@ describe('TextField', () => {
 
     it('Applies the correct width, height, and value', () => {
         const handleChange = vi.fn();
-        render(<TextField icon={false} placeholder="Test" width="50%" height="50%" value="Test" onChange={handleChange} />);
+        render(
+            <TextField icon={false} placeholder="Test" width="50%" height="50%" value="Test" onChange={handleChange} />
+        );
         const inputElement = screen.getByPlaceholderText('Test');
         expect(inputElement).toHaveStyle('width: 50%');
         expect(inputElement).toHaveStyle('height: 50%');
@@ -37,14 +39,7 @@ describe('TextField', () => {
     });
 
     it('renders the icon when the icon prop is true', () => {
-        render(
-            <TextField
-                value=""
-                onChange={() => { }}
-                icon={true}
-                data-testid="textfield"
-            />
-        );
+        render(<TextField value="" onChange={() => {}} icon={true} data-testid="textfield" />);
 
         const iconElement = screen.getByTestId('icon');
         expect(iconElement).toBeInTheDocument();

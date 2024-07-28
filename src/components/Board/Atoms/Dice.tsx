@@ -25,6 +25,10 @@ const DiceContainer = styled.div`
     }
 `;
 
+interface DotProps {
+    "data-testid"?: string;
+}
+
 const ANIMATION_DURATION: number = 800;
 
 const KEY_FRAMES = [
@@ -34,7 +38,7 @@ const KEY_FRAMES = [
     { rotate: '360deg', duration: ANIMATION_DURATION, easing: 'easeInOutQuad' },
 ];
 
-const Dice: React.FC = () => {
+const Dice: React.FC<DotProps> = ({ ...props }) => {
     const [dots, setDots] = React.useState<{ top: string; left: string }[]>([]);
     const diceRef = React.useRef<HTMLDivElement>(null);
 
@@ -88,7 +92,7 @@ const Dice: React.FC = () => {
     };
 
     return (
-        <DiceContainer ref={diceRef} onClick={rollDice}>
+        <DiceContainer {...props} ref={diceRef} onClick={rollDice}>
             {dots.map((dot, index) => (
                 <Dot key={index} top={dot.top} left={dot.left} />
             ))}
