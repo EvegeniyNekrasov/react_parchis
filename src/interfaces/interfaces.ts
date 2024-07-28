@@ -63,3 +63,29 @@ export interface StartScreenProps {
     setPlayerColor: (colorIndex: number, playerIndex: number) => void;
     setReady: (ready: boolean) => void;
 }
+
+export interface TextFieldProps {
+    id?: string;
+    type?: string;
+    name?: string;
+    placeholder?: string;
+    icon: boolean;
+    value?: string;
+    width?: string;
+    height?: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    required?: boolean;
+    'data-testid'?: string;
+    disabled?: boolean;
+  }
+
+  export interface ButtonProps {
+    text: string;
+    width?: string;
+    height?: string;
+    bgColor?: string;
+    color?: string;
+    border?: string;
+    onClick?: () => void;
+    disabled?: boolean;
+}

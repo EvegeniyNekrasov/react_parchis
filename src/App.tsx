@@ -64,13 +64,12 @@ function App() {
     return (
         <div className="main">
             {!ready ? (
-                <StartScreen 
+                <StartScreen
                     playersData={playersData}
                     playersCount={playersCount}
                     handlePlayersCount={handlePlayersCount}
                     setPlayerName={setPlayerName}
                     setPlayerColor={setPlayerColor}
-                   
                     ready={ready}
                     setReady={setReady}
                     selectedColors={selectedColors}

@@ -15,6 +15,7 @@
         "prepare": "husky"
     },
     "dependencies": {
+        "@phosphor-icons/react": "^2.1.7",
         "animejs": "^3.2.2",
         "jest-environment-jsdom": "^29.7.0",
         "prettier": "^3.3.3",

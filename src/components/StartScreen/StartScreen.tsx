@@ -1,11 +1,12 @@
-import React from "react";
-import styled from "styled-components";
-import Container from "../Container/Container";
-import RadioGroup from "../RadioGroup/RadioGroup";
-import Radio from "../Radio/Radio";
-import { colors } from "../../data/data";
-import Text from "../Text/Text";
-import { StartScreenProps } from "../../interfaces/interfaces";
+import React from 'react';
+import Container from '../Container/Container';
+import RadioGroup from '../RadioGroup/RadioGroup';
+import Radio from '../Radio/Radio';
+import { colors } from '../../data/data';
+import Text from '../Text/Text';
+import { StartScreenProps } from '../../interfaces/interfaces';
+import TextField from '../TextField/TextField';
+import Button from '../Button/Button';
 
 const getColorName = (color: string) => {
     switch (color) {
@@ -22,10 +23,7 @@ const getColorName = (color: string) => {
     }
 };
 
-
-
 const StartScreen: React.FC<StartScreenProps> = ({ ...props }) => {
-
     const isColorDisabled = (colorIndex: number) => {
         return props.selectedColors.includes(colorIndex);
     };
@@ -38,7 +36,7 @@ const StartScreen: React.FC<StartScreenProps> = ({ ...props }) => {
     return (
         <>
             <Container width="100%" height="100%">
-                <Container width="50%" height="100%" orientation="column" bgColor='white' padding='20px'>
+                <Container width="50%" height="100%" orientation="column" bgColor="white" padding="20px">
                     <Text color="#000" size="1rem" text="paco" />
                     <RadioGroup>
                         <Radio
@@ -67,7 +65,7 @@ const StartScreen: React.FC<StartScreenProps> = ({ ...props }) => {
                         />
                     </RadioGroup>
                 </Container>
-                <Container width="50%" height="100%" padding='20px'>
+                <Container width="50%" height="100%" padding="20px">
                     {props.playersData && props.playersCount ? (
                         <Container orientation="column" width="400px" height="auto">
                             {Array.from({ length: props.playersCount }).map((_, playerIndex) => (
@@ -82,7 +80,7 @@ const StartScreen: React.FC<StartScreenProps> = ({ ...props }) => {
                                                         : `Player ${playerIndex + 1}`}
                                                 </span>
                                             </p>
-                                            <input type="text" onChange={(e) => props.setPlayerName(e, playerIndex)} />
+                                            <TextField placeholder='select player name' onChange={(e) => props.setPlayerName(e, playerIndex)} icon />
                                             <RadioGroup>
                                                 {Object.entries(colors).map(([_, color], colorIndex) => (
                                                     <Radio
@@ -100,15 +98,13 @@ const StartScreen: React.FC<StartScreenProps> = ({ ...props }) => {
                                     </label>
                                 </div>
                             ))}
-                            <button onClick={() => props.setReady(true)} disabled={isReadyDisabled()}>
-                                Ready
-                            </button>
+                            <Button text="ready" height='30px' onClick={() => props.setReady(true)} disabled={isReadyDisabled()} />
                         </Container>
                     ) : null}
                 </Container>
             </Container>
         </>
-    )
-}
+    );
+};
 
 export default StartScreen;
