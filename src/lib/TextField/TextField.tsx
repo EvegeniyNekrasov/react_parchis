@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { UserCircle } from '@phosphor-icons/react';
-import Container from '../Container/Container';
-import { TextFieldProps } from '../../interfaces/interfaces';
+import Container from '@/lib/Container/Container';
+import { TextFieldProps } from '@/interfaces/interfaces';
 
 const Input = styled.input<{ $width: string; $height: string }>`
     width: ${(props) => props.$width};

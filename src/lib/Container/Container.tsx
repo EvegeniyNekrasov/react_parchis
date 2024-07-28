@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ContainerProps } from '../../interfaces/interfaces';
+import { ContainerProps } from '@interfaces/interfaces';
 
 const ContainerDiv = styled.div<{
     $width: string;

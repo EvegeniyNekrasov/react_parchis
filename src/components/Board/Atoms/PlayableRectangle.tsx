@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PlayableRectangleProps } from '../../../interfaces/interfaces';
+import { PlayableRectangleProps } from '@/interfaces/interfaces';
 
 const getGridTemplate = (index: number) => {
     let gridTemplateColumn = '';

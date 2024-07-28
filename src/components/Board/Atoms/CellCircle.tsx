@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { colors } from '../../../data/data';
-import { CellCircleProps } from '../../../interfaces/interfaces';
+import { colors } from '@/data/data';
+import { CellCircleProps } from '@/interfaces/interfaces';
 
 type CircleProps = {
     $color: number | null;

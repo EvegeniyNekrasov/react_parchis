@@ -2,8 +2,8 @@ import React from 'react';
 import anime from 'animejs';
 import styled from 'styled-components';
 
-import { throwDice } from '../../../data/dice';
-import { DotPosition } from '../../../types/dots';
+import { throwDice } from '@/data/dice';
+import { DotPosition } from '@/types/dots';
 
 import Dot from './Dot';
 

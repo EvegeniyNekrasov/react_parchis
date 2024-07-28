@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { TextProps } from '../../interfaces/interfaces';
+import { TextProps } from '@interfaces/interfaces';
 
 const TextSpan = styled.span<{ color: string; size: string }>`
     color: ${(props) => props.color};
