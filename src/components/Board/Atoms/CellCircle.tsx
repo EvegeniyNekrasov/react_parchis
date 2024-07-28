@@ -16,7 +16,7 @@ const Circle = styled.div<CircleProps>`
 `;
 
 const CellCircle: React.FC<CellCircleProps> = ({ color }) => {
-    return <Circle data-testid='cell' $color={color}></Circle>;
+    return <Circle data-testid="cell" $color={color}></Circle>;
 };
 
 export default CellCircle;

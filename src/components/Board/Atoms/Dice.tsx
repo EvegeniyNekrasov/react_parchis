@@ -26,7 +26,7 @@ const DiceContainer = styled.div`
 `;
 
 interface DotProps {
-    "data-testid"?: string;
+    'data-testid'?: string;
 }
 
 const ANIMATION_DURATION: number = 800;
