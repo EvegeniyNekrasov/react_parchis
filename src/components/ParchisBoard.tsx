@@ -14,6 +14,7 @@ import {
     playableRectangleLeftHorisontal,
     playableRectangleRightHorisontal,
     Cell,
+    colors,
 } from '../data/data';
 import { START_POSITIONS, PLAYABLE_POSITIONS } from '../utils/board-utils';
 
@@ -24,6 +25,7 @@ import { PlayableRectangleProps } from '../interfaces/interfaces';
 import CellCircle from './Board/Atoms/CellCircle';
 
 import './ParchisBoard.css';
+import CenterBoard from '@/components/Board/CenterBoard';
 const RECTABGLES = 21;
 
 const Rectangle = ({ index }) => {
@@ -106,6 +108,28 @@ const ParchisBoard: React.FC<PlayableRectangleProps> = ({ players }) => {
         });
         console.log(number);
     };
+
+    const getCenterColor = (index: number) => {
+        let color: number = 0;
+        switch (index) {
+            case 0:
+                color = 0;
+                break;
+            case 1:
+                color = 1;
+                break;
+            case 2:
+                color = 3;
+                break;
+            case 3:
+                color = 2;
+                break;
+            default:
+                color = 0;
+        }
+
+        return color;
+    }
 
     return (
         <PrincipalBoard>
@@ -207,12 +231,28 @@ const ParchisBoard: React.FC<PlayableRectangleProps> = ({ players }) => {
                         </>
                     )}
                     {index === 4 ? (
-                        <div className="center">
-                            {Array(4)
-                                .fill(0)
-                                .map((_, i) => (
-                                    <Rectangle index={i} />
-                                ))}
+                        // <div className="center">
+                        //     {Array(4)
+                        //         .fill(0)
+                        //         .map((_, i) => (
+                        //             <Rectangle index={i} />
+                        //         ))}
+                        // </div>
+                        <div className='outerRect'>
+                            {Array(4).fill(0).map((_, item) => (
+                                <div className={`inner-${item}`}>
+                                    {Array(3).fill(0).map((_, i) => (
+                                        <div key={i} style={{
+                                            background: i === 1 ? getCenterColor(item) : "transparent",
+                                            flexDirection: item === 0 || item === 2 ? "row" : "column"
+                                        }} className={`cell-center cell-center-${item}`}>
+                                            <CellCircle size={25} color={null} />
+                                            <CellCircle size={25} color={null} />
+                                        </div>
+                                    ))}
+                                </div>
+                            ))}
+                            <div className='innerRect'></div>
                         </div>
                     ) : null}
                 </MainInnerRectangle>

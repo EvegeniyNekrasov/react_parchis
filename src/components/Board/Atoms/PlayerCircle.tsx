@@ -34,12 +34,12 @@ const PlayerCircle: React.FC<PlayerCircleProps> = ({ selected = false, data, onC
                 {/* <button onClick={onClick}>throw dice</button> */}
             </PlayerName>
 
-            {player &&
+            {player ?
                 player.pieces.map((_, i) => (
-                    <Circle color={colors[player.color!]}>
+                    <Circle key={i} color={colors[player.color!]}>
                         <span>{i}</span>
                     </Circle>
-                ))}
+                )) : null}
         </>
     );
 };

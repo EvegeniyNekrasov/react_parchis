@@ -13,6 +13,7 @@
     font-size: 0.8rem;
     font-weight: bold;
 }
+
 .cell-circles {
     width: 30px;
     height: 30px;
@@ -89,4 +90,104 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+
+.outerRect {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+}
+
+.innerRect {
+    width: 210px;
+    height: 210px;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    z-index: 2;
+    align-items: center;
+    /* border: 1px solid black; */
+    /* background: red; */
+}
+
+.inner-0 {
+    position: absolute;
+    height: 42.85px;
+    width: 100%;
+    top: 0;
+    clip-path: polygon(0 0, 100% 0, 86% 100%, 14% 100%);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background: black;
+}
+
+.inner-0::after {
+    content: "";
+    position: absolute;
+    height: 40px;
+    width: 100%;
+    top: 0;
+    clip-path: polygon(0 0, 100% 0, 86% 100%, 14% 100%);
+    background: white;
+    z-index: -1;
+}
+
+.inner-1 {
+    position: absolute;
+    height: 100%;
+    width: 42.85px;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    border: 1px solid black;
+    clip-path: polygon(0 50%, 0 14%, 100% 0, 100% 100%, 0% 86%, 0 50%);
+    right: 0;
+}
+
+.inner-2 {
+    position: absolute;
+    height: 42.85px;
+    width: 100%;
+    bottom: 0;
+    clip-path: polygon(14% 0, 86% 0, 100% 100%, 0 100%);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 1px solid black;
+}
+
+.inner-3 {
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 42.85px;
+    z-index: 1;
+    display: grid;
+    clip-path: polygon(0 50%, 0 0, 100% 14%, 100% 86%, 0% 100%, 0 50%);
+    grid-template-rows: repeat(3, 1fr);
+    border: 1px solid black;
+}
+
+.cell-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+}
+
+.cell-center-0,
+.cell-center-2 {
+    height: 42.85px;
+    width: 100%;
+    border: 1px solid black;
+}
+
+.cell-center-1,
+.cell-center-3 {
+    height: 100%;
+    width: 42.85px;
+    border: 1px solid black;
 }

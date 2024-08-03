@@ -6,6 +6,7 @@ import { Player } from '@/data/data';
 
 export interface CellCircleProps {
     color: number | null;
+    size?: number;
     'data-testid'?: string;
 }
 

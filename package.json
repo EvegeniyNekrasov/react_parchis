@@ -12,7 +12,9 @@
         "format": "prettier --write .",
         "test": "vitest",
         "coverage": "vitest run --coverage",
-        "prepare": "husky"
+        "prepare": "husky",
+        "biome:format": "npx @biomejs/biome format --write ./src",
+        "biome:lint": "npx @biomejs/biome lint ./src"
     },
     "dependencies": {
         "@phosphor-icons/react": "^2.1.7",
@@ -24,6 +26,7 @@
         "styled-components": "^6.1.12"
     },
     "devDependencies": {
+        "@biomejs/biome": "1.8.3",
         "@testing-library/jest-dom": "^6.4.8",
         "@testing-library/react": "^16.0.0",
         "@types/animejs": "^3.1.12",
