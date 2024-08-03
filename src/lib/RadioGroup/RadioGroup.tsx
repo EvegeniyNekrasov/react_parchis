@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
+import type React from "react";
+import styled from "styled-components";
 
 interface RadioGroupProps {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }
 
 const RadioGroupContainer = styled.div`
@@ -13,7 +13,7 @@ const RadioGroupContainer = styled.div`
 `;
 
 const RadioGroup: React.FC<RadioGroupProps> = ({ children }) => {
-    return <RadioGroupContainer>{children}</RadioGroupContainer>;
+  return <RadioGroupContainer>{children}</RadioGroupContainer>;
 };
 
 export default RadioGroup;

@@ -1,13 +1,13 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 interface DotProps {
-    top: string;
-    left: string;
+  top: string;
+  left: string;
 }
 
 type DotContainerProps = {
-    top: string;
-    left: string;
+  top: string;
+  left: string;
 };
 
 const DotContainer = styled.div<DotContainerProps>`
@@ -22,7 +22,7 @@ const DotContainer = styled.div<DotContainerProps>`
 `;
 
 const Dot: React.FC<DotProps> = ({ top, left }) => {
-    return <DotContainer role="dot" top={top} left={left} />;
+  return <DotContainer top={top} left={left} />;
 };
 
 export default Dot;

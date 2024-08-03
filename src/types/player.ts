@@ -1,5 +1,5 @@
 export type playerThrowsDice = {
-    name: string;
-    throw: number | null;
-    bloqued: boolean;
+  name: string;
+  throw: number | null;
+  bloqued: boolean;
 };

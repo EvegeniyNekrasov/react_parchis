@@ -92,7 +92,6 @@
     align-items: center;
 }
 
-
 .outerRect {
     width: 300px;
     height: 300px;
@@ -100,7 +99,6 @@
     justify-content: center;
     align-items: center;
     position: relative;
-
 }
 
 .innerRect {
@@ -127,7 +125,7 @@
 }
 
 .inner-0::after {
-    content: "";
+    content: '';
     position: absolute;
     height: 40px;
     width: 100%;

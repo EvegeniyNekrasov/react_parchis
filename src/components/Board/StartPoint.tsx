@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import { StartPointProps } from '@interfaces/interfaces';
+import type React from "react";
+import styled from "styled-components";
+import type { StartPointProps } from "@interfaces/interfaces";
 
 const Rectangle = styled.div`
     width: 100%;
@@ -23,11 +23,11 @@ const CircleContainer = styled.div`
 `;
 
 const StartPoint: React.FC<StartPointProps> = ({ children }) => {
-    return (
-        <Rectangle>
-            <CircleContainer>{children}</CircleContainer>
-        </Rectangle>
-    );
+  return (
+    <Rectangle>
+      <CircleContainer>{children}</CircleContainer>
+    </Rectangle>
+  );
 };
 
 export default StartPoint;

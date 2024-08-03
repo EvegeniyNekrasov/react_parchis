@@ -1,12 +1,12 @@
-import styled from 'styled-components';
-import { ButtonProps } from '@interfaces/interfaces';
+import styled from "styled-components";
+import type { ButtonProps } from "@interfaces/interfaces";
 
 const ButtonContainer = styled.button<{
-    $width: string;
-    $height: string;
-    $bgColor: string;
-    $color: string;
-    $border: string;
+  $width: string;
+  $height: string;
+  $bgColor: string;
+  $color: string;
+  $border: string;
 }>`
     width: ${(props) => props.$width};
     height: ${(props) => props.$height};
@@ -34,19 +34,26 @@ const ButtonContainer = styled.button<{
 `;
 
 const Button: React.FC<ButtonProps> = ({
-    text,
-    width = '100%',
-    height = 'auto',
-    bgColor = '#007bff',
-    color = 'white',
-    border = 'none',
-    ...props
+  text,
+  width = "100%",
+  height = "auto",
+  bgColor = "#007bff",
+  color = "white",
+  border = "none",
+  ...props
 }) => {
-    return (
-        <ButtonContainer $width={width} $height={height} $bgColor={bgColor} $color={color} $border={border} {...props}>
-            {text}
-        </ButtonContainer>
-    );
+  return (
+    <ButtonContainer
+      $width={width}
+      $height={height}
+      $bgColor={bgColor}
+      $color={color}
+      $border={border}
+      {...props}
+    >
+      {text}
+    </ButtonContainer>
+  );
 };
 
 export default Button;

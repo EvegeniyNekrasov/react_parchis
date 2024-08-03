@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
+import type React from "react";
+import styled from "styled-components";
 
-import { UserCircle } from '@phosphor-icons/react';
-import Container from '@/lib/Container/Container';
-import { TextFieldProps } from '@/interfaces/interfaces';
+import { UserCircle } from "@phosphor-icons/react";
+import Container from "@/lib/Container/Container";
+import type { TextFieldProps } from "@/interfaces/interfaces";
 
 const Input = styled.input<{ $width: string; $height: string }>`
     width: ${(props) => props.$width};
@@ -15,20 +15,27 @@ const Input = styled.input<{ $width: string; $height: string }>`
 `;
 
 const TextField: React.FC<TextFieldProps> = ({
-    value = '',
-    icon = false,
-    type = 'text',
-    width = '100%',
-    height = 'auto',
-    onChange,
-    ...props
+  value = "",
+  icon = false,
+  type = "text",
+  width = "100%",
+  height = "auto",
+  onChange,
+  ...props
 }) => {
-    return (
-        <Container width="100%" height="auto">
-            {icon ? <UserCircle data-testid="icon" size={34} /> : null}
-            <Input onChange={onChange} value={value} type={type} $width={width} $height={height} {...props} />
-        </Container>
-    );
+  return (
+    <Container width="100%" height="auto">
+      {icon ? <UserCircle data-testid="icon" size={34} /> : null}
+      <Input
+        onChange={onChange}
+        value={value}
+        type={type}
+        $width={width}
+        $height={height}
+        {...props}
+      />
+    </Container>
+  );
 };
 
 export default TextField;

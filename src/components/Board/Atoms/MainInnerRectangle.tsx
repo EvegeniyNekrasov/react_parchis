@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import { MainInnerRectangleProps } from '@/interfaces/interfaces';
+import type React from "react";
+import styled from "styled-components";
+import type { MainInnerRectangleProps } from "@/interfaces/interfaces";
 
 const Cell = styled.div`
     display: flex;
@@ -11,8 +11,10 @@ const Cell = styled.div`
     height: calc(var(--board-dimention) / 3);
 `;
 
-const MainInnerRectangle: React.FC<MainInnerRectangleProps> = ({ children }) => {
-    return <Cell>{children}</Cell>;
+const MainInnerRectangle: React.FC<MainInnerRectangleProps> = ({
+  children,
+}) => {
+  return <Cell>{children}</Cell>;
 };
 
 export default MainInnerRectangle;
