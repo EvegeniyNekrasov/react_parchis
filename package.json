@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "test": "vitest",
+    "test": "vitest run",
     "coverage": "vitest run --coverage",
     "prepare": "husky",
     "biome:format": "npx @biomejs/biome format --write ./src",
@@ -48,10 +48,13 @@
     "vite": "^5.3.4",
     "vitest": "^2.0.4"
   },
-
   "lint-staged": {
     "*.{js,ts,cjs,mjs,d.cts,d.mts,json,jsonc}": [
       "biome check --apply --no-errors-on-unmatched"
     ]
+  },
+  "volta": {
+    "node": "20.15.1",
+    "npm": "10.8.0"
   }
 }
