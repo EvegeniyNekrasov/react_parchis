@@ -1,7 +1,8 @@
+import anime from "animejs";
 import type React from "react";
 import { useRef, useState } from "react";
-import anime from "animejs";
 import styled from "styled-components";
+import { v4 as uuidv4 } from "uuid";
 
 import { throwDice } from "@/data/dice";
 import type { DotPosition } from "@/types/dots";
@@ -9,21 +10,21 @@ import type { DotPosition } from "@/types/dots";
 import Dot from "./Dot";
 
 const DiceContainer = styled.div`
-    width: 50px;
-    height: 50px;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    user-select: none;
-    border: 1px solid black;
-    border-radius: 10px;
-    background-color: white;
+  width: 50px;
+  height: 50px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: white;
 
-    &:hover {
-        background-color: #f0f0f0;
-    }
+  &:hover {
+    background-color: #f0f0f0;
+  }
 `;
 
 interface DotProps {
@@ -95,7 +96,7 @@ const Dice: React.FC<DotProps> = ({ ...props }) => {
   return (
     <DiceContainer {...props} ref={diceRef} onClick={rollDice}>
       {dots.map((dot) => (
-        <Dot key={dot.left} top={dot.top} left={dot.left} />
+        <Dot key={uuidv4()} top={dot.top} left={dot.left} />
       ))}
     </DiceContainer>
   );

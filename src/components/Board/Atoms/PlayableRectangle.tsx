@@ -1,6 +1,6 @@
+import type { PlayableRectangleProps } from "@/interfaces/interfaces";
 import type React from "react";
 import styled from "styled-components";
-import type { PlayableRectangleProps } from "@/interfaces/interfaces";
 
 const getGridTemplate = (index: number) => {
   let gridTemplateColumn = "";
@@ -33,11 +33,11 @@ type ReactangleProps = {
 };
 
 const Rectangle = styled.div<ReactangleProps>`
-    width: calc(var(--board-dimention) / 3);
-    height: calc(var(--board-dimention) / 3);
-    display: grid;
-    grid-template-columns: ${({ $column }) => $column};
-    grid-template-rows: ${({ $row }) => $row};
+  width: calc(var(--board-dimention) / 3);
+  height: calc(var(--board-dimention) / 3);
+  display: grid;
+  grid-template-columns: ${({ $column }) => $column};
+  grid-template-rows: ${({ $row }) => $row};
 `;
 
 const PlayableRectangle: React.FC<PlayableRectangleProps> = ({

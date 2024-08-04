@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import type { ContainerProps } from "@interfaces/interfaces";
+import styled from "styled-components";
 
 const ContainerDiv = styled.div<{
   $width: string;
@@ -9,14 +9,14 @@ const ContainerDiv = styled.div<{
   $padding: string;
   $gap: string;
 }>`
-    width: ${(props) => props.$width};
-    height: ${(props) => props.$height};
-    background-color: ${(props) => props.$bgColor};
-    margin: 0 auto;
-    display: flex;
-    padding: ${(props) => props.$padding};
-    flex-direction: ${(props) => props.$orientation};
-    gap: ${(props) => props.$gap};
+  width: ${(props) => props.$width};
+  height: ${(props) => props.$height};
+  background-color: ${(props) => props.$bgColor};
+  margin: 0 auto;
+  display: flex;
+  padding: ${(props) => props.$padding};
+  flex-direction: ${(props) => props.$orientation};
+  gap: ${(props) => props.$gap};
 `;
 
 const Container: React.FC<ContainerProps> = ({

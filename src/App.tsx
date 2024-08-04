@@ -1,7 +1,7 @@
-import React from "react";
 import ParchisBoard from "@/components/ParchisBoard";
-import { players, type Player } from "@/data/data";
 import StartScreen from "@/components/StartScreen/StartScreen";
+import { type Player, players } from "@/data/data";
+import React from "react";
 
 import "./App.css";
 

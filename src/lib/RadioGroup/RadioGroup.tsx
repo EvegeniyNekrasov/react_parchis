@@ -6,10 +6,10 @@ interface RadioGroupProps {
 }
 
 const RadioGroupContainer = styled.div`
-    display: flex;
-    gap: 8px;
-    align-items: flex-start;
-    width: 100%;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  width: 100%;
 `;
 
 const RadioGroup: React.FC<RadioGroupProps> = ({ children }) => {

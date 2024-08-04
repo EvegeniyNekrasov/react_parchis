@@ -1,11 +1,11 @@
-@import url('./styles/satochi.css');
+@import url("./styles/satochi.css");
 
 body {
-    width: 100%;
-    height: 100vh;
-    font-family: 'Satoshi', sans-serif;
+  width: 100%;
+  height: 100vh;
+  font-family: "Satoshi", sans-serif;
 }
 
 :root {
-    --board-dimention: 900px;
+  --board-dimention: 900px;
 }

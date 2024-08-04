@@ -2,40 +2,40 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 
-import StartPoint from "@/components/Board/StartPoint";
-import PlayerCircle from "@/components/Board/Atoms/PlayerCircle";
 import MainInnerRectangle from "@/components/Board/Atoms/MainInnerRectangle";
 import PlayableRectangle from "@/components/Board/Atoms/PlayableRectangle";
+import PlayerCircle from "@/components/Board/Atoms/PlayerCircle";
+import StartPoint from "@/components/Board/StartPoint";
 
 import {
-  boardRectangle,
+  type Cell,
   type Player,
+  boardRectangle,
   playableRectangleBottomVertical,
-  playableRectangleTopVertical,
   playableRectangleLeftHorisontal,
   playableRectangleRightHorisontal,
-  type Cell,
+  playableRectangleTopVertical,
 } from "../data/data";
 
-import { START_POSITIONS, PLAYABLE_POSITIONS } from "../utils/board-utils";
+import { PLAYABLE_POSITIONS, START_POSITIONS } from "../utils/board-utils";
 
 import { throwDice } from "../data/dice";
-import type { playerThrowsDice } from "../types/player";
 import type { PlayableRectangleProps } from "../interfaces/interfaces";
+import type { playerThrowsDice } from "../types/player";
 
 import CellCircle from "./Board/Atoms/CellCircle";
 
 import "./ParchisBoard.css";
 
 const PrincipalBoard = styled.div`
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
-    max-width: var(--board-dimention);
-    max-height: var(--board-dimention);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  max-width: var(--board-dimention);
+  max-height: var(--board-dimention);
 `;
 
 const ParchisBoard: React.FC<PlayableRectangleProps> = ({ players }) => {

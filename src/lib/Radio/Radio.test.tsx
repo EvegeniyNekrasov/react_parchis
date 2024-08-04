@@ -1,7 +1,7 @@
 // Radio.test.tsx
-import { render, screen, fireEvent } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { describe, it, expect, vi } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import Radio from "./Radio";
 
 describe("Radio", () => {

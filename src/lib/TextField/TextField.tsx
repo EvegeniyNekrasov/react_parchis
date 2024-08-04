@@ -1,17 +1,17 @@
 import type React from "react";
 import styled from "styled-components";
 
-import { UserCircle } from "@phosphor-icons/react";
-import Container from "@/lib/Container/Container";
 import type { TextFieldProps } from "@/interfaces/interfaces";
+import Container from "@/lib/Container/Container";
+import { UserCircle } from "@phosphor-icons/react";
 
 const Input = styled.input<{ $width: string; $height: string }>`
-    width: ${(props) => props.$width};
-    height: ${(props) => props.$height};
-    padding: 0.5rem;
-    border-radius: 0.2rem;
-    border: 1px solid #ced4da;
-    margin-bottom: 1rem;
+  width: ${(props) => props.$width};
+  height: ${(props) => props.$height};
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  border: 1px solid #ced4da;
+  margin-bottom: 1rem;
 `;
 
 const TextField: React.FC<TextFieldProps> = ({

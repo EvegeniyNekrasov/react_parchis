@@ -1,8 +1,8 @@
 import "@testing-library/jest-dom";
-import { render, screen } from "@testing-library/react";
-import { describe, it, expect } from "vitest";
-import { colors, PlayerColor } from "@/data/data";
+import { PlayerColor, colors } from "@/data/data";
 import { hexToRgba } from "@/utils/test-utils";
+import { render, screen } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
 
 import CellCircle from "./CellCircle";
 

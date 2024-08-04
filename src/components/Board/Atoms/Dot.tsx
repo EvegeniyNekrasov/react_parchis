@@ -11,14 +11,14 @@ type DotContainerProps = {
 };
 
 const DotContainer = styled.div<DotContainerProps>`
-    width: 20%;
-    height: 20%;
-    border-radius: 50%;
-    background-color: black;
-    position: absolute;
-    top: ${({ top }) => top};
-    left: ${({ left }) => left};
-    transform: translate(-50%, -50%);
+  width: 20%;
+  height: 20%;
+  border-radius: 50%;
+  background-color: black;
+  position: absolute;
+  top: ${({ top }) => top};
+  left: ${({ left }) => left};
+  transform: translate(-50%, -50%);
 `;
 
 const Dot: React.FC<DotProps> = ({ top, left }) => {

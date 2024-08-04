@@ -41,54 +41,54 @@
 
 /* src/components/Center.css */
 .center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 300px;
-    height: 300px;
-    background-color: white;
-    border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 300px;
+  background-color: white;
+  border: 2px solid black;
 }
 
 .center-star {
-    position: relative;
-    width: 100%;
-    height: 100%;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .star-part {
-    position: absolute;
-    width: 50%;
-    height: 50%;
-    background-color: #ffdd00;
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  background-color: #ffdd00;
 }
 
 .star-part.top {
-    top: 0;
-    left: 25%;
+  top: 0;
+  left: 25%;
 }
 
 .star-part.right {
-    top: 25%;
-    right: 0;
+  top: 25%;
+  right: 0;
 }
 
 .star-part.bottom {
-    bottom: 0;
-    left: 25%;
+  bottom: 0;
+  left: 25%;
 }
 
 .star-part.left {
-    top: 25%;
-    left: 0;
+  top: 25%;
+  left: 0;
 }
 
 .star-center {
-    position: absolute;
-    top: 25%;
-    left: 25%;
-    width: 50%;
-    height: 50%;
-    background-color: red;
-    border-radius: 50%;
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
+  background-color: red;
+  border-radius: 50%;
 }

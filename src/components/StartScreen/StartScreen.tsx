@@ -1,12 +1,12 @@
-import type React from "react";
-import Container from "@/lib/Container/Container";
-import RadioGroup from "@/lib/RadioGroup/RadioGroup";
-import Radio from "@/lib/Radio/Radio";
 import { colors } from "@/data/data";
-import Text from "@/lib/Text/Text";
 import type { StartScreenProps } from "@/interfaces/interfaces";
-import TextField from "@/lib/TextField/TextField";
 import Button from "@/lib/Button/Button";
+import Container from "@/lib/Container/Container";
+import Radio from "@/lib/Radio/Radio";
+import RadioGroup from "@/lib/RadioGroup/RadioGroup";
+import Text from "@/lib/Text/Text";
+import TextField from "@/lib/TextField/TextField";
+import type React from "react";
 import { v4 as uuidv4 } from "uuid";
 
 const getColorName = (color: string) => {
